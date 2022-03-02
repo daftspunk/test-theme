@@ -1,0 +1,9 @@
+name: Test Theme
+description: Used by October CMS to troubleshoot functions and verify issues.
+
+# Inherit mumma bear
+# parent: demo
+
+code: Test-Theme
+author: October CMS
+authorCode: October

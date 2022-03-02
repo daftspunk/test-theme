@@ -1,0 +1,20 @@
+name = "yo"
+
+[staticPage]
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'site/meta' %}
+    </head>
+    <body class="{{ 'page-'~this.page.id }}">
+
+        <!-- Content -->
+        <section id="layout-content">
+            {repeater name="sections" groups="~/plugins/october/test/config/repeater_content.yaml" displayMode="builder" showDuplicate="true" tab="Blocks"}
+                {variable name="_dummy" type="text"}{/variable}
+            {/repeater}
+        </section>
+
+    </body>
+</html>
