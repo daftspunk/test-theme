@@ -2,5 +2,12 @@
 url = "/"
 layout = "default"
 ==
+
+<h2>Test Theme - <em>October CMS</em></h2>
+
+<ul>
+    <li><a href="{{ 'file'|page }}">Testing Files</a></li>
+</ul>
+
 {# Breaks Security Policy use 'index'|page instead #}
 {{ this.controller.pageUrl('index') }}
