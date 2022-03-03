@@ -1,0 +1,17 @@
+##
+url = "/component"
+layout = "default"
+
+[kitchenSink]
+defaultView = "0"
+==
+<?
+function onStart()
+{
+    //dd($this->kitchenSink->property('defaultView'));
+}
+?>
+==
+{{ kitchenSink.property('defaultView') ? 'True' : 'False' }}
+
+{% component 'kitchenSink' %}
