@@ -9,6 +9,14 @@ name = "yo"
     </head>
     <body class="{{ 'page-'~this.page.id }}">
 
+        <!-- Header -->
+        {variable
+            name="header"
+            type="nestedform"
+            form="~/themes/test-theme/config/pages-header.yaml"
+            tab="Header"
+        }{/variable}
+
         <!-- Content -->
         <section id="layout-content">
             {repeater name="sections" groups="~/plugins/october/test/config/repeater_content.yaml" displayMode="builder" showDuplicate="true" tab="Blocks"}
