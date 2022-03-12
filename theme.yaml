@@ -24,3 +24,13 @@ form:
             type: nestedform
             showPanel: false
             form: ~/themes/test-theme/config/pages-header.yaml
+
+        notes:
+            tab: Notes
+            label: Notes
+            prompt: Add note
+            span: full
+            type: repeater
+            minItems: 1
+            titleFrom: note
+            form: $/october/test/config/repeater_notes.yaml
