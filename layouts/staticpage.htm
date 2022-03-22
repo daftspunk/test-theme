@@ -22,6 +22,10 @@ name = "yo"
             {repeater name="sections" groups="~/plugins/october/test/config/repeater_content.yaml" displayMode="builder" showDuplicate="true" tab="Blocks"}
                 {variable name="_dummy" type="text"}{/variable}
             {/repeater}
+
+            {repeater name="sections" groups="~/themes/test-theme/config/pages-lazy-content.yaml" tab="Lazy"}
+                {variable name="_dummy" type="text"}{/variable}
+            {/repeater}
         </section>
 
         <footer>

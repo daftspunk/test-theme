@@ -1,0 +1,29 @@
+basic:
+    name: Basic section
+    description: Add a basic section
+    icon: icon-columns
+    fields:
+        section_00:
+            type: section
+            label: Basic Section
+        content:
+            type: nestedform
+            showPanel: false
+            form:
+                tabs:
+                    stretch: true
+                    defaultTab: Content
+                    lazy:
+                        - Styling
+                    icons:
+                        Content: icon-cog
+                        Styling: icon-paint-brush
+                    fields:
+                        section_01:
+                            tab: Content
+                            type: section
+                            label: Content
+                        section_02:
+                            tab: Styling
+                            type: section
+                            label: Styling
