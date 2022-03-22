@@ -15,3 +15,7 @@ function onStart()
 {{ kitchenSink.property('defaultView') ? 'True' : 'False' }}
 
 {% component 'kitchenSink' %}
+
+<p><code>getFoo</code> {{ kitchenSink.foo }}</p>
+
+<p><code>getTestUser</code> {{ kitchenSink.testUser.userAndCode }}</p>
