@@ -3,12 +3,29 @@ url = "/"
 layout = "default"
 ==
 
-<h2>Test Theme - <em>October CMS</em></h2>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5">
+                <h1>Test Theme</h1>
+            </div>
 
-<ul>
-    <li><a href="{{ 'component'|page }}">Testing Components</a></li>
-    <li><a href="{{ 'file'|page }}">Testing Files</a></li>
-</ul>
+            <div class="col-xl-6 col-lg-7">
+                <div class="welcome-content-container">
+                    Testing October CMS Features
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-{# Breaks Security Policy use 'index'|page instead #}
-{{ this.controller.pageUrl('index') }}
+<div class="container">
+    <ul>
+        <li><a href="{{ 'ajax'|page }}">Testing AJAX</a></li>
+        <li><a href="{{ 'component'|page }}">Testing Components</a></li>
+        <li><a href="{{ 'file'|page }}">Testing Files</a></li>
+    </ul>
+
+    {# Breaks Security Policy use 'index'|page instead #}
+    {{ this.controller.pageUrl('index') }}
+</div>

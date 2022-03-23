@@ -1,6 +1,7 @@
-name = "Default Layout"
+description = "Default layout"
 
-[removeIndex]
+[resources]
+less[] = "layouts/default.less"
 ==
 <!DOCTYPE html>
 <html>
@@ -9,10 +10,20 @@ name = "Default Layout"
     </head>
     <body class="{{ 'page-'~this.page.id }}">
 
+        <!-- Header -->
+        <header id="layout-header">
+            {% partial 'site/header' %}
+        </header>
+
         <!-- Content -->
-        <section id="layout-content" style="padding: 20px; border: 20px solid #ccc">
+        <section id="layout-content">
             {% page %}
         </section>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial 'site/footer' %}
+        </footer>
 
     </body>
 </html>

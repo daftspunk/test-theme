@@ -1,6 +1,9 @@
 ##
 url = "/file"
 layout = "default"
+
+[resources]
+less[] = "pages/component.less"
 ==
 <?
 function onStart()
@@ -9,24 +12,47 @@ function onStart()
 }
 ?>
 ==
-{% set mediaFile = 'company-founder.png' %}
-<p>
-    <em>Please make sure you have a file called <strong>{{ mediaFile }}</strong> in your media manager</em>
-</p>
-<ul>
-    <li>
-        <h5>Avatar URL - |media</h5>
-        <img src="{{ backendUser.avatar|media }}" width="100" height="100" />
-        <pre>{{ backendUser.avatar|media }}</pre>
-    </li>
-    <li>
-        <h5>Media URL - |media</h5>
-        <img src="{{ 'company-founder.png'|media }}" width="100" height="100" />
-        <pre>{{ 'company-founder.png'|media }}</pre>
-    </li>
-    <li>
-        <h5>Resized URL - |media|resize</h5>
-        <img src="{{ 'company-founder.png'|media|resize(260, null, { mode: 'crop' }) }}" width="100" height="100" />
-        <pre>{{ 'company-founder.png'|resize(260, null, { mode: 'crop' }) }}</pre>
-    </li>
-</ul>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-12">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <h1>Testing Files</h1>
+                    </div>
+
+                    <div class="col-xl-7">
+                        <p>
+                            Test File and Media functions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    {% set mediaFile = 'company-founder.png' %}
+    <p>
+        <em>Please make sure you have a file called <strong>{{ mediaFile }}</strong> in your media manager</em>
+    </p>
+    <ul>
+        <li>
+            <h5>Avatar URL - |media</h5>
+            <img src="{{ backendUser.avatar|media }}" width="100" height="100" />
+            <pre>{{ backendUser.avatar|media }}</pre>
+        </li>
+        <li>
+            <h5>Media URL - |media</h5>
+            <img src="{{ 'company-founder.png'|media }}" width="100" height="100" />
+            <pre>{{ 'company-founder.png'|media }}</pre>
+        </li>
+        <li>
+            <h5>Resized URL - |media|resize</h5>
+            <img src="{{ 'company-founder.png'|media|resize(260, null, { mode: 'crop' }) }}" width="100" height="100" />
+            <pre>{{ 'company-founder.png'|resize(260, null, { mode: 'crop' }) }}</pre>
+        </li>
+    </ul>
+
+</div>

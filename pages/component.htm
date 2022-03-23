@@ -4,6 +4,9 @@ layout = "default"
 
 [kitchenSink]
 defaultView = "0"
+
+[resources]
+less[] = "pages/component.less"
 ==
 <?
 function onStart()
@@ -12,10 +15,31 @@ function onStart()
 }
 ?>
 ==
-{{ kitchenSink.property('defaultView') ? 'True' : 'False' }}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-12">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <h1>Testing Components</h1>
+                    </div>
 
-{% component 'kitchenSink' %}
+                    <div class="col-xl-7">
+                        <p>
+                            Test Component functions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {{ kitchenSink.property('defaultView') ? 'True' : 'False' }}
 
-<p><code>getFoo</code> {{ kitchenSink.foo }}</p>
+    {% component 'kitchenSink' %}
 
-<p><code>getTestUser</code> {{ kitchenSink.testUser.userAndCode }}</p>
+    <p><code>getFoo</code> {{ kitchenSink.foo }}</p>
+
+    <p><code>getTestUser</code> {{ kitchenSink.testUser.userAndCode }}</p>
+</div>

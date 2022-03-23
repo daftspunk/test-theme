@@ -27,3 +27,7 @@ basic:
                             tab: Styling
                             type: section
                             label: Styling
+                        editor:
+                            tab: Styling
+                            type: richeditor
+                            label: Content
