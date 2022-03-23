@@ -1,0 +1,67 @@
+.navbar {
+    padding-top: .9rem;
+    padding-bottom: .9rem;
+
+    &.navbar-dark {
+        background-color: #DB6A26;
+    }
+
+    .navbar-brand {
+        margin-top: -5px;
+    }
+
+    a:hover, a:focus, a.focus {
+        text-decoration: none;
+    }
+
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: #6bc48d;
+    }
+}
+
+@media screen and (min-width: @screen-md-min) {
+
+    .navbar .navbar-nav > li {
+        > a {
+            position: relative;
+            transition: color 0.2s ease 0.05s;
+        }
+
+        > a:before {
+            position: absolute;
+            height: 4px;
+            bottom: 2px;
+            content: '';
+            border-radius: 4px;
+            z-index: 5;
+            width: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.2s ease 0.05s;
+        }
+
+        > a.active:before,
+        > a.active:hover:before {
+            background: #fff;
+        }
+
+        > a:hover:before {
+            background: #e67e22;
+        }
+    }
+
+}
+
+//
+// Auto Hide Navbar
+//
+
+.navbar-autohide {
+    transition: transform .5s;
+}
+
+@media (min-width: @screen-md-min) {
+    .navbar-autohide.is-hidden {
+        transform: translateY(-(@navbar-height + 2px));
+    }
+}

@@ -1,0 +1,101 @@
+title = "AJAX Framework"
+url = "/demo/ajax"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<?
+function onTest()
+{
+    $value1 = input('value1');
+    $value2 = input('value2');
+    $operation = input('operation');
+
+    switch ($operation) {
+        case '+' :
+            $this['result'] = $value1 + $value2;
+            break;
+        case '-' :
+            $this['result'] = $value1 - $value2;
+            break;
+        case '*' :
+            $this['result'] = $value1 * $value2;
+            break;
+        default :
+            $this['result'] = $value2 != 0 ? round($value1 / $value2, 2) : 'NaN';
+            break;
+    }
+}
+?>
+==
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-12">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <h1>AJAX Framework</h1>
+                    </div>
+
+                    <div class="col-xl-7">
+                        <p>The built-in JavaScript framework provides simple but powerful AJAX capabilities. In most cases, you don't need to write JavaScript code to post data to the server and update elements of your page. The <code>data-</code> attributes can solve a lot of typical tasks. For more complex cases you can employ the full power of JavaScript. You can find more information in the <a href="https://docs.octobercms.com/2.x/ajax/introduction.html">documentation</a>. Check out the calculator example below!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-10 col-lg-12">
+            <div class="panel">
+                <div class="row">
+                    <div class="col-lg-9 control-panel">
+                        <div class="panel-body">
+                            <form role="form" class="form-inline" data-request="onTest" data-request-update="calcresult: '#result'">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="15" name="value1">
+                                </div>
+
+                                <div class="form-group operation-buttons">
+                                    <label><input type="radio" name="operation" value="+"><span>+</span></label>
+                                    <label><input type="radio" name="operation" value="-"><span>-</span></label>
+                                    <label><input type="radio" name="operation" value="*" checked><span>*</span></label>
+                                    <label><input type="radio" name="operation" value="/"><span>/</span></label>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="5" name="value2">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">=</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ps-0">
+                        <div id="result">{% partial "calcresult" %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page Explanation -->
+<div class="home-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-12">
+                {% partial "explain/ajax.htm" %}
+
+                <div class="py-3">
+                    <p><a href="{{ 'plugins'|page }}" class="btn btn-primary btn-cta">Continue to Plugin components ⟶</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
