@@ -1,0 +1,34 @@
+uuid: 64252bf1-566d-4d47-beee-ff2d890066ec
+name: Call To Action
+type: mixin
+handle: Blocks\CallToAction
+
+fields:
+    title:
+        label: Title
+        placeholder: Action example
+        type: text
+
+    description:
+        label: Description
+        placeholder: Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
+        type: textarea
+        size: small
+
+    primary_text:
+        label: Primary Text
+        span: auto
+        placeholder: Main call to action
+
+    primary_url:
+        label: Primary URL
+        span: auto
+
+    secondary_text:
+        label: Secondary Text
+        span: auto
+        placeholder: Secondary action
+
+    secondary_url:
+        label: Secondary URL
+        span: auto

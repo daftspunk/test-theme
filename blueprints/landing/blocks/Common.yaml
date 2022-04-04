@@ -1,0 +1,11 @@
+uuid: 4cd99a3b-1589-4e21-90b8-9caca8f35d46
+handle: Blocks\Options
+type: mixin
+name: Common Options
+
+fields:
+    use_container:
+        type: checkbox
+        label: Use Container
+        comment: Wrap this element in a container
+        default: 1

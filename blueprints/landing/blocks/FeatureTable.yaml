@@ -1,0 +1,17 @@
+uuid: 579971f9-f6ae-4a64-84ce-f14958c29c1e
+handle: Blocks\FeatureTable
+type: mixin
+name: Feature Table
+
+fields:
+    target:
+        label: Link Target
+        type: text
+        span: auto
+    label:
+        label: Button Label
+        type: text
+        span: auto
+    _options:
+        type: mixin
+        source: 4cd99a3b-1589-4e21-90b8-9caca8f35d46

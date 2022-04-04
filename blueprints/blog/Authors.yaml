@@ -1,0 +1,41 @@
+uuid: 6947ff28-b660-47d7-9240-24ca6d58aeae
+handle: Blog\Authors
+type: entry
+name: Authors
+useDrafts: false
+
+navigation:
+    mode: secondary
+    parent: Blog
+    icon: icon-user
+    order: 200
+
+fields:
+    avatar:
+        label: Avatar
+        type: mediafinder
+        mode: image
+
+    about:
+        label: About
+        type: textarea
+
+    facebook_url:
+        label: Facebook URL
+        tab: Social
+        placeholder: "https://..."
+
+    twitter_url:
+        label: Twitter URL
+        tab: Social
+        placeholder: "https://..."
+
+    github_url:
+        label: GitHub URL
+        tab: Social
+        placeholder: "https://..."
+
+    linkedin_url:
+        label: LinkedIn URL
+        tab: Social
+        placeholder: "https://..."

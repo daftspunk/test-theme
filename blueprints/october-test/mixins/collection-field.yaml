@@ -1,0 +1,9 @@
+uuid: 7b193500-ac0b-481f-a79c-2a362646364b
+name: Collection Field
+handle: collectionField
+group: Test
+fields:
+    basic_collections:
+        label: Basic Collection
+        type: collections
+        source: a69a9c9c-e197-43d6-867d-9dab4be56793

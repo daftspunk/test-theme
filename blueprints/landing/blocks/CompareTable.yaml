@@ -1,0 +1,17 @@
+uuid: 0b3e2288-4a82-4cda-a9b2-b345cf086a28
+handle: Blocks\CompareTable
+type: mixin
+name: Compare Table
+
+fields:
+    target:
+        label: Link Target
+        type: text
+        span: auto
+    label:
+        label: Button Label
+        type: text
+        span: auto
+    _options:
+        type: mixin
+        source: 4cd99a3b-1589-4e21-90b8-9caca8f35d46

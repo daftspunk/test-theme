@@ -1,0 +1,17 @@
+uuid: f7074c6c-bbc0-471d-9cf2-bc47e4b97f2a
+handle: Blocks\PricingTable
+type: mixin
+name: Pricing Table
+
+fields:
+    target:
+        label: Link Target
+        type: text
+        span: auto
+    label:
+        label: Button Label
+        type: text
+        span: auto
+    _options:
+        type: mixin
+        source: 4cd99a3b-1589-4e21-90b8-9caca8f35d46

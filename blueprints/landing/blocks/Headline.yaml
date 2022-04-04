@@ -1,0 +1,25 @@
+uuid: d8f52a6d-b34b-4e43-8e6e-49fb3243c831
+handle: Blocks\Headline
+type: mixin
+name: Headline
+
+fields:
+    title:
+        label: Title
+        placeholder: Punny headline
+        type: text
+
+    description:
+        label: Description
+        placeholder: And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.
+        type: textarea
+        size: small
+
+    button_text:
+        label: Button Text
+        span: auto
+        placeholder: Coming soon
+
+    button_url:
+        label: Button URL
+        span: auto

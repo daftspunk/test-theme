@@ -1,0 +1,50 @@
+uuid: 1c0285d4-5c88-4338-92ce-3f9ac8b5020a
+name: Carousel
+type: mixin
+handle: Blocks\Carousel
+
+fields:
+    slides:
+        label: Slides
+        type: repeater
+        form:
+            fields:
+                image:
+                    label: Image
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                    span: right
+
+                title:
+                    label: Title
+                    placeholder: Example headline
+                    type: text
+                    span: left
+
+                description:
+                    label: Description
+                    placeholder: Some representative placeholder content for the first slide of the carousel.
+                    type: textarea
+                    size: small
+                    span: left
+
+                align_text:
+                    label: Text Alignment
+                    type: radio
+                    span: full
+                    cssClass: inline-options
+                    options:
+                        left: Left
+                        right: Right
+                        center: Center
+
+                button_text:
+                    label: Button Text
+                    span: auto
+                    placeholder: Coming soon
+
+                button_url:
+                    label: Button URL
+                    span: auto
+                    placeholder: https://

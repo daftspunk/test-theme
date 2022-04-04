@@ -1,0 +1,31 @@
+uuid: 339b11b7-69ad-43c4-9be1-6953e7738827
+handle: Wiki
+type: structure
+name: Wiki
+maxDepth: 3
+useDrafts: true
+
+navigation:
+    icon: icon-wikipedia-w
+
+fields:
+    content:
+        label: Content
+        tab: Edit
+        type: richeditor
+        span: adaptive
+
+    show_in_toc:
+        label: Show in TOC
+        comment: Include this article in the table of contents
+        type: checkbox
+
+    summary_text:
+        label: Summary Text
+        type: textarea
+        size: small
+
+    gallery:
+        label: Gallery
+        type: fileupload
+        mode: image

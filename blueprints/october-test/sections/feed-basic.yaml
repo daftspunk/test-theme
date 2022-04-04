@@ -1,0 +1,15 @@
+uuid: e09db3ff-154f-4c48-b25f-a415261308c5
+name: Feed (Basic)
+handle: feedBasic
+type: stream
+
+navigation:
+    mode: secondary
+    parent: 03ea35df-c3b6-4a35-b21c-979c9cf372a2
+    icon: icon-futbol-o
+    order: 210
+
+fields:
+    content:
+        label: Post Content
+        type: richeditor

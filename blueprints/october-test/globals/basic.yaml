@@ -1,0 +1,27 @@
+uuid: 03ea35df-c3b6-4a35-b21c-979c9cf372a2
+name: Basic Global
+handle: basicGlobal
+description: Testing a Global with Minimum Definition.
+
+primaryNavigation:
+    label: Playground 2
+    icon: icon-sign-language
+    order: 205
+
+navigation:
+    mode: primary
+    icon: icon-futbol-o
+    order: 200
+
+fields:
+    facebook_link:
+        label: Facebook Link
+        type: text
+
+    _include_collection:
+        type: mixin
+        source: 7b193500-ac0b-481f-a79c-2a362646364b
+
+    _include_entry:
+        type: mixin
+        source: 7b193500-ac0b-481f-a79c-2a362646364a

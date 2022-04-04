@@ -1,0 +1,86 @@
+uuid: 7b193500-ac0b-481f-a79c-2a362646364d
+handle: BlockBuilder
+type: mixin
+name: Block Builder
+
+fields:
+    blocks:
+        label: Blocks
+        type: repeater
+        displayMode: builder
+        span: adaptive
+        tab: Blocks
+        groups:
+            featurette:
+                name: Featurette
+                description: Large list of features with a screenshot
+                icon: octo-icon-diamond
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\Featurette
+
+            headline:
+                name: Big Headline
+                description: Shows a big headline with a link
+                icon: octo-icon-text-h1
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\Headline
+
+            # headline_items:
+            #     name: Headline Items
+            #     description: Usually follows a headline
+            #     icon: icon-quote-right
+            #     fields:
+            #         _mixin:
+            #             type: mixin
+            #             source: Blocks\HeadlineItems
+
+            call_to_action:
+                name: Call To Action
+                description: A block that requests the user do something
+                icon: octo-icon-comment
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\CallToAction
+
+            carousel:
+                name: Carousel
+                description: A gallery of images
+                icon: octo-icon-picture
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\Carousel
+
+            # feature_table:
+            #     name: Feature Table
+            #     description: Headers with view detail links
+            #     icon: icon-quote-right
+            #     fields:
+            #         _mixin:
+            #             type: mixin
+            #             source: Blocks\FeatureTable
+
+            # pricing_table:
+            #     name: Pricing Table
+            #     description: Display a table of available pricing
+            #     icon: icon-quote-right
+            #     fields:
+            #         _mixin:
+            #             type: mixin
+            #             source: Blocks\PricingTable
+
+            # compare_table:
+            #     name: Compare Table
+            #     description: Compare items in a table
+            #     icon: icon-quote-right
+            #     fields:
+            #         _mixin:
+            #             type: mixin
+            #             source: Blocks\CompareTable
+
+

@@ -1,0 +1,15 @@
+uuid: f9a78eae-fb42-40d3-a8e5-22299da73d0e
+name: Tree (Basic)
+handle: treeBasic
+type: tree
+
+navigation:
+    mode: secondary
+    parent: 03ea35df-c3b6-4a35-b21c-979c9cf372a2
+    icon: icon-futbol-o
+    order: 210
+
+fields:
+    content:
+        label: Article Content
+        type: markdown

@@ -1,0 +1,30 @@
+uuid: d73c1771-0ab5-4278-9fd0-ed3af944882e
+handle: Blocks\Featurette
+type: mixin
+name: Featurette
+
+fields:
+    features:
+        label: Features
+        type: repeater
+        form:
+            fields:
+                image:
+                    label: Image
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                    span: right
+
+                title:
+                    label: Title
+                    placeholder: First featurette heading. It’ll blow your mind.
+                    type: text
+                    span: left
+
+                description:
+                    label: Description
+                    placeholder: Some great placeholder content for the first featurette here. Imagine some exciting prose here.
+                    type: textarea
+                    size: small
+                    span: left

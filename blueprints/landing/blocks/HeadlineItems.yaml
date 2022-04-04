@@ -1,0 +1,17 @@
+uuid: 5967a4a3-12b9-462c-bcd2-cf6fcfc68c86
+handle: Blocks\HeadlineItems
+type: mixin
+name: HeadlineItems
+
+fields:
+    target:
+        label: Link Target
+        type: text
+        span: auto
+    label:
+        label: Button Label
+        type: text
+        span: auto
+    _options:
+        type: mixin
+        source: 4cd99a3b-1589-4e21-90b8-9caca8f35d46
