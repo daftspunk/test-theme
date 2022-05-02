@@ -2,7 +2,7 @@
 url = "/component"
 layout = "default"
 
-[kitchenSink]
+[kitchenSink kSink]
 defaultView = "0"
 
 [resources]
@@ -37,7 +37,7 @@ function onStart()
 <div class="container">
     {{ kitchenSink.property('defaultView') ? 'True' : 'False' }}
 
-    {% component 'kitchenSink' %}
+    {% component 'kSink' %}
 
     <p><code>getFoo</code> {{ kitchenSink.foo }}</p>
 
