@@ -1,0 +1,15 @@
+##
+url = "/api/blogposts"
+
+[collection blog]
+handle = "Blog\Post"
+==
+<?
+function onFoo()
+{
+    $this['a'] = 'b';
+}
+?>
+==
+
+{% do response(ajaxHandler('onFoo')) %}

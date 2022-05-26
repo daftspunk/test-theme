@@ -1,27 +1,8 @@
 {
-    "name": "october/demo-theme",
+    "name": "october/test-theme-theme",
     "type": "october-theme",
-    "description": "Demo October CMS theme",
-    "keywords": ["october", "cms", "demo", "theme"],
-    "authors": [
-        {
-            "name": "Alexey Bobkov",
-            "email": "aleksey.bobkov@gmail.com",
-            "role": "Co-founder"
-        },
-        {
-            "name": "Samuel Georges",
-            "email": "daftspunky@gmail.com",
-            "role": "Co-founder"
-        }
-    ],
+    "description": "Used by October CMS to troubleshoot functions and verify issues.",
     "require": {
-        "php": ">=5.4",
         "composer/installers": "~1.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
     }
 }

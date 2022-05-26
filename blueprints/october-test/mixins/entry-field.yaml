@@ -1,9 +1,0 @@
-uuid: 7b193500-ac0b-481f-a79c-2a362646364a
-name: Entry Field
-handle: entryField
-group: Test
-fields:
-    basic_entries:
-        label: Basic Entry
-        type: entries
-        source: e09db3ff-154f-4c48-b25f-a415261308c5
