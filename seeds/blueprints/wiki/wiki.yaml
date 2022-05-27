@@ -1,7 +1,7 @@
-uuid: 339b11b7-69ad-43c4-9be1-6953e7738827
-handle: Wiki
+uuid: 2b6649c6-6ce2-48db-bd74-172c92ef492b
+handle: Test\Wiki
 type: structure
-name: Wiki
+name: Test Wiki
 maxDepth: 3
 useDrafts: true
 
@@ -29,3 +29,16 @@ fields:
         label: Gallery
         type: fileupload
         mode: image
+
+    list_items:
+        label: List Items
+        type: datatable
+        btnAddRowLabel: Add Item
+        btnDeleteRowLabel: Delete Item
+        columns:
+            text:
+                type: string
+                title: Text
+            number:
+                type: string
+                title: Number
