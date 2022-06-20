@@ -30,27 +30,62 @@ function onTest()
 
     Flash::success('You did it');
 }
+
+function onTestSelector()
+{
+    return ['=[data-anyselector]' => 'Success'];
+}
 ?>
 ==
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-10 col-lg-12">
-                <div class="row">
-                    <div class="col-xl-5">
-                        <h1>Testing AJAX</h1>
-                    </div>
+<div class="container">
+    <h1>AJAX Tests</h1>
 
-                    <div class="col-xl-7">
-                        <p>
-                            Test AJAX functions
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Testing Custom Selector -->
+    <div data-anyselector>
+        Content Will Go Here
     </div>
+
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a href="#" data-request="onTestSelector">Test Custom Selector</a>
+    </form>
+
+    <!-- Testing Data Object from jQuery -->
+    <script>
+        function getChecked() { return [1,2,3]; }
+    </script>
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a href="#"
+        data-request="onAjax"
+        onclick="$(this).data('request-data', { additional: getChecked() });"
+        >Test Data Object</a>
+    </form>
+
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a href="#"
+            data-request="onAjax"
+            onclick="console.log('clicked'); $(this).data('request-data', 'additional:1');"
+        >Trigger Data String</a>
+    </form>
+
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a href="#" id="target" data-request="onAjax"></a>
+
+        <a href="javascript:runTest()">Trigger Click Event</a>
+    </form>
+
+    <script>
+        function runTest() {
+            console.log('Running Request');
+            $('#target').data('request-data', 'additional:1').get(0).click();
+        }
+    </script>
 </div>
+
+<hr />
 
 <div class="container">
     <div class="row">

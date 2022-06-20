@@ -1,0 +1,34 @@
+##
+title = "AJAX Extras"
+url = "/ajax-extras"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<?
+function onSubmit()
+{
+    throw new ValidationException([
+        'nameo' => 'You must give a name!',
+    ]);
+}
+?>
+==
+<div class="container">
+    <form
+        data-request="onSubmit"
+        data-request-validate>
+        <hr />
+        <h5>Error:</h5>
+
+        <hr />
+
+        <input type="text" name="nameo" value="" />
+        <!-- <div data-validate-for="nameo">Hard coded message</div> -->
+        <div data-validate-for="nameo"></div>
+
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

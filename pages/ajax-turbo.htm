@@ -1,0 +1,15 @@
+##
+title = "Turbo Router"
+url = "/ajax-turbo"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<div class="container">
+    {% if this.request.pjax %}
+        <h1>Loaded with PJAX</h1>
+    {% else %}
+        <h2>Not Loaded with PJAX</h2>
+    {% endif %}
+</div>
