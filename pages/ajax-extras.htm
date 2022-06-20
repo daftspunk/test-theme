@@ -13,6 +13,11 @@ function onSubmit()
         'nameo' => 'You must give a name!',
     ]);
 }
+
+function onTestFlash()
+{
+    Flash::success('Success');
+}
 ?>
 ==
 <div class="container">
@@ -30,5 +35,13 @@ function onSubmit()
 
 
         <button type="submit">Submit</button>
+    </form>
+
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a
+            href="#"
+            data-request-flash
+            data-request="onTestFlash">Test Flash</a>
     </form>
 </div>
