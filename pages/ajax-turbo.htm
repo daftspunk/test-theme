@@ -6,10 +6,31 @@ layout = "default"
 [resources]
 less[] = "pages/ajax.less"
 ==
+<?
+function onSleep()
+{
+    sleep(10);
+}
+?>
+==
 <div class="container">
     {% if this.request.pjax %}
         <h1>Loaded with PJAX</h1>
     {% else %}
         <h2>Not Loaded with PJAX</h2>
     {% endif %}
+
+    <form>
+        <input type="hidden" name="input" value="1">
+        <a
+            href="#"
+            data-request-flash
+            data-request="onSleep">Progress Bar Is Disabled</a>
+    </form>
+
+    <script>
+        addEventListener('ajax:setup', function(event) {
+            event.detail.context.options.progressBar = false;
+        });
+    </script>
 </div>
