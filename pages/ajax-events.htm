@@ -1,0 +1,129 @@
+##
+title = "AJAX Events"
+url = "/ajax-events"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<?
+function onSleep()
+{
+    sleep(10);
+}
+?>
+==
+<div class="container">
+
+    <form>
+        <div data-mycontainer>
+            <div>
+                <a
+                    href="javascript:;"
+                    data-testrequest="onSomething"
+                    data-testadd>Test Events</a>
+            </div>
+
+            <a href="#" data-popovertest>Popover Test</a>
+
+            <div id="popover">
+                Popover not ready
+            </div>
+        </div>
+    </form>
+
+    <script type="text/template" id="popoverTemplate">
+        <div class="container">
+            <ul>
+                <li><a href="javascript:;" data-testrequest="onSomething" data-testadd>Thing One</a></li>
+                <li><a href="javascript:;" data-testrequest="onSomething" data-testadd>Thing Two</a></li>
+            </ul>
+        </div>
+    </script>
+
+    <script>
+    var container = document.querySelector('[data-mycontainer]');
+    var link = document.querySelector('[data-testadd]');
+
+    bindVanillaTest();
+    bindVanillaTest2();
+    // bindjQueryTest();
+
+    function bindVanillaTest2() {
+        $('form').on('click', '[data-popovertest]', function() {
+            $('#popover').html($('#popoverTemplate').html());
+        });
+
+        $('#popover')
+            .on('click', 'a', function (ev) {
+                // Wait 2 ticks for framework which is deferred 1 tick
+                setTimeout(function() {
+                    $('#popover').html('');
+                    console.log('closed');
+                }, 2);
+            })
+            .on('testAjaxSetup', '[data-testadd]', function() {
+                console.log('You made it!!!');
+            });
+    }
+
+    function bindVanillaTest() {
+        // oc.Events.on(link, 'click', function(ev) {
+        //     console.log('Halted!');
+        //     ev.stopPropagation();
+        //     ev.preventDefault();
+        // });
+
+        oc.Events.on(document, 'click', '[data-testrequest]', function(event) {
+            console.log('[Vanilla] 0. Click event');
+            event.preventDefault();
+            setTimeout(function() {
+                oc.Events.dispatch('testajax:setup', { target: event.target });
+                console.log('[Vanilla] 9. Request submitted');
+            }, 1);
+        });
+
+        $(document).on('testajax:setup', function(ev) {
+            var jQueryEvent = $.Event('testAjaxSetup');
+
+            console.log('[jQuery] 2. Migrating event');
+
+            $(ev.target).trigger(jQueryEvent);
+
+            if (jQueryEvent.isDefaultPrevented()) {
+                ev.preventDefault();
+            }
+        });
+
+        oc.Events.on(container, 'testajax:setup', '[data-testadd]', function() {
+            console.log('[Vanilla] 1. Element mycontainer found testadd');
+        });
+
+        $(container).on('testAjaxSetup', '[data-testadd]', function() {
+            console.log('[jQuery] 3. Element mycontainer found testadd');
+        });
+    }
+
+    function bindjQueryTest() {
+        // $(link).on('click', function(ev) {
+        //     console.log('Halted!');
+        //     ev.stopPropagation();
+        //     ev.preventDefault();
+        // });
+
+        $(document).on('click', '[data-testrequest]', function(event) {
+            console.log('[jQuery] 0. Click event');
+            event.preventDefault();
+            setTimeout(function() {
+                $(event.target).trigger('testAjaxSetup');
+                console.log('[jQuery] 9. Request submitted');
+            }, 1);
+        });
+
+        $(container).on('testAjaxSetup', '[data-testadd]', function() {
+            console.log('[jQuery] 1. Element mycontainer found testadd');
+        });
+    }
+
+    </script>
+</div>
