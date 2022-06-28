@@ -33,7 +33,7 @@ function onTest()
 
 function onTestSelector()
 {
-    return ['=[data-anyselector]' => 'Success'];
+    return ['=[data-anyselector]' => 'Success <span>Should Be Red</span>'];
 }
 ?>
 ==
@@ -41,13 +41,17 @@ function onTestSelector()
     <h1>AJAX Tests</h1>
 
     <!-- Testing Custom Selector -->
-    <div data-anyselector>
+    <div data-anyselector id="customSelector">
         Content Will Go Here
     </div>
 
     <form>
         <input type="hidden" name="input" value="1">
-        <a href="#" data-request="onTestSelector">Test Custom Selector</a>
+        <a
+            href="#"
+            data-request="onTestSelector"
+            data-request-success="$('#customSelector > span').css('color', 'red')"
+            >Test Custom Selector</a>
     </form>
 
     <!-- Testing Data Object from jQuery -->
