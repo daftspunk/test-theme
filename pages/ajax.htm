@@ -87,6 +87,18 @@ function onTestSelector()
             $('#target').data('request-data', 'additional:1').get(0).click();
         }
     </script>
+
+    <form id="customEventForm">
+        <input type="hidden" name="input" value="1">
+        <a href="javascript:runCustomEvent()">Trigger Custom Event</a>
+    </form>
+
+    <script>
+        function runCustomEvent() {
+            console.log('Running Request');
+            oc.request('#customEventForm', 'onAjax', { data: { additional: 1 } });
+        }
+    </script>
 </div>
 
 <hr />
