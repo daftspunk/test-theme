@@ -1,0 +1,30 @@
+url = "/testupload"
+layout = "default"
+==
+<?
+function onStart()
+{
+    Log::debug('test log');
+}
+
+function uploadBase64()
+{
+    $data = input('baseData');
+    $name = input('file_name');
+    if (isset($data) && isset($name)) {
+        $imageData = base64_decode($data);
+        $sFile = (new \System\Models\File)->fromData($imageData, $name);
+        $sFile->save();
+        return $sFile;
+    }
+    return "File not found";
+}
+
+function onTrackSubmit()
+{
+    //throw new ValidationException(['yo' => 'moo']);
+    throw new Exception('yo');
+}
+?>
+==
+asdasdsda
