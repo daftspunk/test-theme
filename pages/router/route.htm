@@ -9,7 +9,7 @@ defaultView = "0"
 <?
 function onFilterCars()
 {
-    \Flash::success('This came from the page');
+    Flash::success('This came from the page');
 }
 ?>
 ==
@@ -20,12 +20,15 @@ function onFilterCars()
         <a
             href="#"
             data-request-flash
-            onclick="$(this).request('onFilterCars'); return false;">Test Page AJAX</p>
+            onclick="$(this).request('onFilterCars'); return false;">
+            Test Page AJAX
+        </a>
     </p>
     <p>
         <a
             href="#"
-            data-request-flash
-            onclick="$(this).request('kSink::onFilterCars'); return false;">Test Component AJAX</p>
+            onclick="$(this).request('kSink::onFilterCars', { flash: true }); return false;">
+            Test Component AJAX
+        </a>
     </p>
 </div>
