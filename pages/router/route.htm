@@ -1,0 +1,31 @@
+##
+title = "Testing Routes"
+url = "/route/cars/:query?*"
+layout = "default"
+
+[kitchenSink kSink]
+defaultView = "0"
+==
+<?
+function onFilterCars()
+{
+    \Flash::success('This came from the page');
+}
+?>
+==
+<div class="container">
+    <h1>Testing Routes</h1>
+    <p>You arrived at <b>{{ this.request.url }}</b></p>
+    <p>
+        <a
+            href="#"
+            data-request-flash
+            onclick="$(this).request('onFilterCars'); return false;">Test Page AJAX</p>
+    </p>
+    <p>
+        <a
+            href="#"
+            data-request-flash
+            onclick="$(this).request('kSink::onFilterCars'); return false;">Test Component AJAX</p>
+    </p>
+</div>
