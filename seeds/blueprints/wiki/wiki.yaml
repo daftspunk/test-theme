@@ -42,3 +42,85 @@ fields:
             number:
                 type: string
                 title: Number
+
+    a_text:
+        tab: Controls
+        span: auto
+        label: A Text
+        type: text
+
+    a_number:
+        tab: Controls
+        span: auto
+        label: A Number
+        type: number
+
+    a_password:
+        tab: Controls
+        span: auto
+        label: A Password
+        type: password
+
+    a_email:
+        tab: Controls
+        span: auto
+        label: A Email
+        type: email
+
+    a_textarea:
+        tab: Controls
+        span: auto
+        label: A Textarea
+        type: textarea
+        size: tiny
+
+    a_dropdown:
+        tab: Controls
+        span: auto
+        label: A Dropdown
+        type: dropdown
+        options:
+            draft: Draft
+            published: Published
+            archived: Archived
+
+    a_radio:
+        tab: Controls
+        span: auto
+        label: A Radio
+        type: radio
+        options:
+            all: All
+            registered: Registered only
+            guests: Guests only
+
+    a_balloon_selector:
+        tab: Controls
+        span: auto
+        label: A Balloon Selector
+        type: balloon-selector
+        options:
+            female: Female
+            male: Male
+
+    a_checkbox:
+        tab: Controls
+        span: auto
+        label: A Checkbox
+        type: checkbox
+
+    a_switch:
+        tab: Controls
+        span: auto
+        label: A Switch
+        type: switch
+
+    a_checkboxlist:
+        tab: Controls
+        span: auto
+        label: A Checkbox List
+        type: checkboxlist
+        options:
+            open_account: Open account
+            close_account: Close account
+            modify_account: Modify account
