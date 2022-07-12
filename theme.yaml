@@ -9,28 +9,36 @@ author: October CMS
 authorCode: October
 
 form:
-    fields:
-        _section_footer:
-            label: Footer
-            comment: Customize the look of the footer.
-            type: section
+    tabs:
+        fields:
+            _section_footer:
+                label: Footer
+                comment: Customize the look of the footer.
+                type: section
 
-        title:
-            label: Title
-            translatable: true
+            title:
+                label: Title
+                translatable: true
 
-        footer:
-            translatable: true
-            type: nestedform
-            showPanel: false
-            form: ~/themes/test-theme/config/pages-header.yaml
+            footer:
+                translatable: true
+                type: nestedform
+                showPanel: false
+                form: ~/themes/test-theme/config/pages-header.yaml
 
-        notes:
-            tab: Notes
-            label: Notes
-            prompt: Add note
-            span: full
-            type: repeater
-            minItems: 1
-            titleFrom: note
-            form: $/october/test/config/repeater_notes.yaml
+            notes:
+                tab: Notes
+                label: Notes
+                prompt: Add note
+                span: full
+                type: repeater
+                minItems: 1
+                titleFrom: note
+                form: $/october/test/config/repeater_notes.yaml
+
+            workings:
+                label: 'Working for'
+                tab: 'Working for'
+                type: mediafinder
+                maxItems: 0
+                mode: image
