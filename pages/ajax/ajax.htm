@@ -59,7 +59,8 @@ function onTestSelector()
         function getChecked() { return [1,2,3]; }
     </script>
     <form>
-        <input type="hidden" name="input" value="1">
+        <input type="hidden" name="models[test=1]" value="value" />
+        <input type="hidden" name="input" value="1" />
         <a href="#"
         data-request="onAjax"
         onclick="$(this).data('request-data', { additional: getChecked() });"
