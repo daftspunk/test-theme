@@ -32,5 +32,27 @@ function onSleep()
         addEventListener('ajax:setup', function(event) {
             event.detail.context.options.progressBar = false;
         });
+
+        // Testing out animations
+        function animateOut() {
+            console.log('Waiting...');
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log('Ok go...');
+                    resolve('resolved');
+                }, 2000);
+            });
+        }
+
+        // Only bind this event once
+        if (!window.isBeforeRenderBound) {
+            addEventListener('page:before-render', async (event) => {
+                event.preventDefault();
+                await animateOut();
+                event.detail.resume();
+            });
+
+            window.isBeforeRenderBound = true;
+        }
     </script>
 </div>
