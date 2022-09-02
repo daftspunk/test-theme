@@ -1,0 +1,11 @@
+title = "Page 2"
+url = "/evaltest/page2"
+==
+<html>
+  <body>
+      <h1>PAGE 2</h1>
+      <a href="/evaltest/page1">Open page 1</a>
+      <script data-turbo-eval="false" src="{{ ['@jquery', '@framework.bundle']|theme }}"></script>
+      <script>console.log($.request);</script>
+  </body>
+</html>
