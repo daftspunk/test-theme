@@ -6,6 +6,7 @@ name = "yo"
 <html>
     <head>
         {% partial 'site/meta' %}
+        <link rel="canonical" href="​{{ staticPage.page.baseFileName|staticPage }}" />
     </head>
     <body class="{{ 'page-'~this.page.id }}">
 
