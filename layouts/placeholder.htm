@@ -1,0 +1,27 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    {% partial 'site/meta' %}
+    <title>{{ this.page.title }}</title>
+    {# These partials import styles #}
+    {% set headerContent = partial('placeholder/header') %}
+    {% set footerContent = partial('placeholder/footer') %}
+    {% styles %}
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="body">
+                {{ headerContent|raw }}
+                <main>
+                    {% page %}
+                </main>
+                {{ footerContent|raw }}
+            </div>
+        </div>
+    </div>
+    {% scripts %}
+</body>
+</html>

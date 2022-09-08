@@ -1,0 +1,21 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{{ 'index'|page }}">Main Page</a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% put styles %}
+    <style>
+        footer {
+            background-color: blue;
+        }
+    </style>
+{% endput %}
+{% put scripts %}
+    <script>
+        console.log('script from footer.htm!')
+    </script>
+{% endput %}

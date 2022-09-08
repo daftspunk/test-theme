@@ -1,0 +1,21 @@
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ 'index'|page }}">Main Page</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+{% put styles %}
+    <style>
+        header {
+            background-color: red;
+        }
+    </style>
+{% endput %}
+{% put scripts %}
+    <script>
+        console.log('script from header.htm!')
+    </script>
+{% endput %}
