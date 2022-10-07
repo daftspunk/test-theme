@@ -9,6 +9,12 @@ author: October CMS
 authorCode: October
 
 form:
+    fields:
+        link_color:
+            label: Link color
+            type: colorpicker
+            assetVar: 'link-color'
+
     tabs:
         fields:
             _section_footer:
