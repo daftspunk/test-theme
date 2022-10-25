@@ -1,0 +1,76 @@
+##
+title = "AJAX Events"
+url = "/ajax-events"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<?
+/**
+ * onDownloadDocument forces file download
+ */
+public function onDownloadDocument()
+{
+    $filename = 'hello-world.txt';
+
+    return Response::make('Hello world', 200, [
+        'Content-Type' => 'text/plain',
+        'Content-Disposition' => sprintf('%s; filename="%s"', 'attachment', $filename)
+    ]);
+}
+
+/**
+ * onOpenFileInBrowser will display file in browser
+ */
+public function onOpenFileInBrowser()
+{
+    $imagePath = base_path('modules/media/tests/fixtures/media/images/small.png');
+
+    return Response::download($imagePath, 'small.png', ['Content-Type' => 'image/png']);
+}
+
+/**
+ * onDownloadOrPrompt will randomly show a popup or download a file
+ */
+public function onDownloadOrPrompt()
+{
+    if (rand() % 2 === 0) {
+        return ['result' => 'Server is busy, try again in a moment...'];
+    }
+
+    $imagePath = base_path('modules/media/tests/fixtures/media/images/small.png');
+
+    return Response::download($imagePath, 'small.png', ['Content-Type' => 'image/png']);
+}
+?>
+==
+<div class="container">
+    <h3>Testing AJAX Downloads</h3>
+    <a
+        href="javascript:;"
+        data-request="onDownloadDocument"
+        data-request-download
+    >
+        Download Document
+    </a>
+    <hr />
+    <button
+        data-request="onOpenFileInBrowser"
+        data-request-download
+        data-browser-target="_blank"
+    >
+        Open Document In New Window
+    </button>
+    <hr />
+    <a
+        href="javascript:;"
+        data-request="onDownloadOrPrompt"
+        data-request-success="if (data && data.result) alert(data.result)"
+        data-request-download="moo.jpg"
+        data-browser-target="_blank"
+        data-control="popup"
+        data-handler="onDownloadOrPrompt">
+        Download or Prompt
+    </a>
+</div>
