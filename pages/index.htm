@@ -23,11 +23,12 @@ title = "Homepage"
         <div class="card col-4">
             <div class="card-body">
                 <h5 class="card-title">CMS Components</h5>
-                <p class="card-text">Testing templates, components, properties, etc.</p>
+                <p class="card-text">Testing templates, components, etc.</p>
                 <div class="d-grid gap-2">
-                    <a href="{{ 'components/component'|page }}" class="btn btn-primary">Testing Components</a>
-                    <a href="{{ 'placeholder/index'|page }}" class="btn btn-primary">Testing Placeholders</a>
-                    <a href="{{ 'translate/locale'|page }}" class="btn btn-primary">Testing Localization</a>
+                    <a href="{{ 'cms/component'|page }}" class="btn btn-primary">Testing Components</a>
+                    <a href="{{ 'cms/placeholder'|page }}" class="btn btn-primary">Testing Placeholders</a>
+                    <a href="{{ 'cms/locale'|page }}" class="btn btn-primary">Testing Localization</a>
+                    <a href="{{ 'cms/route'|page }}" class="btn btn-primary">Testing Routes</a>
                 </div>
             </div>
         </div>
@@ -53,7 +54,4 @@ title = "Homepage"
             </div>
         </div>
     </div>
-
-    {# Breaks Security Policy use 'index'|page instead #}
-    {{ this.controller.pageUrl('index') }}
 </div>

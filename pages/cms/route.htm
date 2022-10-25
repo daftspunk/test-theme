@@ -1,6 +1,6 @@
 ##
 title = "Testing Routes"
-url = "/route/cars/:query?*"
+url = "/cms/route/cars/:query?*"
 layout = "default"
 
 [kitchenSink kSink]
@@ -30,5 +30,11 @@ function onFilterCars()
             onclick="$(this).request('kSink::onFilterCars', { flash: true }); return false;">
             Test Component AJAX
         </a>
+    </p>
+    <hr />
+    <p>
+        pageUrl is blocked:
+        {# Breaks Security Policy use 'index'|page instead #}
+        {{ this.controller.pageUrl('index') }}
     </p>
 </div>
