@@ -1,0 +1,76 @@
+##
+title = "Testing Twig"
+url = "/cms/twig"
+layout = "default"
+==
+<?
+function onStart()
+{
+    $this->getTwig()->addExtension(new \Twig\Extension\StringLoaderExtension);
+}
+?>
+==
+<div class="container">
+    <h1>Testing Twig</h1>
+
+    <h3>Testing Twig functions</h3>
+    <pre>
+
+    config('app.locale') → {{ config('app.locale') }}
+
+    env('APP_ENV', 'production') → {{ env('APP_ENV', 'production') }}
+
+    this.session.get('_token') → {{ this.session.get('_token') }}
+
+    carbon('now') → {{ carbon('now') }}
+
+    carbon('now').formatLocalized('%d.%m.%Y %H:%M:%S') → {{ carbon('now').formatLocalized('%d.%m.%Y %H:%M:%S') }}
+
+    carbon('yesterday').diffForHumans() → {{ carbon('yesterday').diffForHumans() }}
+
+    carbon('now').format('m.d.y.H.i.s') → {{ carbon('now').format('m.d.y.H.i.s') }}
+    </pre>
+
+    <hr />
+    <h3>Testing Twig filters</h3>
+    <pre>
+
+    'I love programming.'|trans → {{ 'I love programming.'|trans }}
+
+    'Jack'|str_upper → {{ 'Jack'|str_upper }}
+
+    'JACK'|str_lower → {{ 'JACK'|str_lower }}
+
+    'best '|str_repeat(3) → {{ 'best '|str_repeat(3) }}
+
+    'mail'|str_plural(1) → {{ 'mail'|str_plural(1) }}
+
+    'mail'|str_plural(2) → {{ 'mail'|str_plural(2) }}
+
+    "Hello World!"|str_limit(5) → {{ "Hello World!"|str_limit(5) }}
+
+    'xxx'|str_pad_both(7, 'o') → {{ 'xxx'|str_pad_both(7, 'o') }}
+
+    'octobercms@gmail.tld'|html_mailto → {{ 'octobercms@gmail.tld'|html_mailto }}
+    </pre>
+
+    <hr />
+    <h3>Testing Twig dump</h3>
+    {{ dump(this.session.all()) }}
+
+
+    <hr />
+    <h3>Testing custom extension</h3>
+    {% set name = 'John' %}
+    {{ include(template_from_string("Hello {{ name }}")) }}
+    {{ include(template_from_string("Hurry up it is: {{ 'now'|date('m/d/Y') }}")) }}
+
+    <h3>Testing collect function</h3>
+
+    {% set data = [{'name': 'David', 'age': 31}, {'name': 'John', 'age': 28}] %}
+    <ul>
+    {% for item in collect(data).sortBy('age') %}
+        <li>{{ item.name }} (Age: {{ item.age }})</li>
+    {% endfor %}
+    </ul>
+</div>
