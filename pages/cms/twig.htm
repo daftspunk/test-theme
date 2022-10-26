@@ -52,6 +52,8 @@ function onStart()
     'xxx'|str_pad_both(7, 'o') → {{ 'xxx'|str_pad_both(7, 'o') }}
 
     'octobercms@gmail.tld'|html_mailto → {{ 'octobercms@gmail.tld'|html_mailto }}
+
+    'October CMS'|str_replace('CMS', 'ERP') → {{ 'October CMS'|str_replace('CMS', 'ERP') }}
     </pre>
 
     <hr />
@@ -73,4 +75,8 @@ function onStart()
         <li>{{ item.name }} (Age: {{ item.age }})</li>
     {% endfor %}
     </ul>
+
+    <h3>Testing mail obfuscation</h3>
+    <p>{{ 'octobercms@gmail.tld'|html_mailto }}</p>
+    <p><a href="{{ 'octobercms@gmail.tld'|html_email }}">Test</a></p>
 </div>

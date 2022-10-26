@@ -13,4 +13,26 @@ layout = "default"
     <!-- l'October CMS -->
     <p>{{ 'theme.options.website_name'|trans }}</p>
 
+    <p>{{ '{1} :value minute ago|[2,*] :value minutes ago'|trans_choice(5, { value: 5 }) }}</p>
+
+    <p>{{ '{1} :value minute ago|[2,*] :value minutes ago'|trans_choice(1, { value: 1 }) }}</p>
+
+    <hr />
+
+    <h3>Test escaping</h3>
+
+    <p>{{ 'I love :variable.'|trans({ variable: '<b>LAMP</b>' })|raw }}</p>
+
+    <p>{{ 'I love :variable.'|trans({ variable: '<b>LAMP</b>' }) }}</p>
+
+    <hr />
+
+    <h3>Test short syntax</h3>
+
+    <p>{{ 'I love programming.'|_ }}</p>
+
+    <p>{{ '{1} :value minute ago|[2,*] :value minutes ago'|__(5, { value: 5 }) }}</p>
+
+    <p>{{ '{1} :value minute ago|[2,*] :value minutes ago'|__(1, { value: 1 }) }}</p>
+
 </div>
