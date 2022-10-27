@@ -54,6 +54,8 @@ function onStart()
     'octobercms@gmail.tld'|html_mailto → {{ 'octobercms@gmail.tld'|html_mailto }}
 
     'October CMS'|str_replace('CMS', 'ERP') → {{ 'October CMS'|str_replace('CMS', 'ERP') }}
+
+    {{ "<p><strong>Test</strong></p>'|html_strip('<p>')"|e }} → {{ '<p><strong>Test</strong></p>'|html_strip('<p>')|e }}
     </pre>
 
     <hr />
