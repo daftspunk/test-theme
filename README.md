@@ -2,9 +2,9 @@
 
 This is a test theme used by October CMS to troubleshoot functions and verify issues. To install this theme:
 
-1. download and extract this archive to `/themes/test-theme`
-2. navigate to the backend and click on **Settings**
-3. select the Theme from the list or via the **cms.active_theme** setting
+1. Download and extract this archive to `/themes/test-theme`
+2. Navigate to the backend and click on **Settings**
+3. Select the Theme from the list or via the **cms.active_theme** setting
 
 
 ### Dependency
