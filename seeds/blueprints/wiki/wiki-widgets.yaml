@@ -27,19 +27,6 @@ fields:
         type: nestedform
         form:
             fields:
-                platform:
-                    span: auto
-                    label: Platform
-                    type: dropdown
-                    options:
-                        facebook: Facebook
-                        linkedin: LinkedIn
-                        dribbble: Dribbble
-                        twitter: Twitter
-                        youtube: YouTube
-
-                url:
-                    span: auto
-                    label: Social Link
-                    type: text
-                    placeholder: "https://..."
+                nested_form:
+                    type: mixin
+                    source: Test\Wiki\NestedFormFields
