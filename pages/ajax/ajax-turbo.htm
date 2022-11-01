@@ -14,7 +14,9 @@ function onSleep()
 ?>
 ==
 <div class="container">
-    {% if this.request.pjax %}
+    {% if this.request.pjaxCached %}
+        <h1>Loaded with PJAX using Snapshot</h1>
+    {% elseif this.request.pjax %}
         <h1>Loaded with PJAX</h1>
     {% else %}
         <h2>Not Loaded with PJAX</h2>
