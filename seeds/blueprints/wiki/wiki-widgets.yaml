@@ -1,0 +1,45 @@
+uuid: 18047951-8a8f-4bd7-b5cd-236744bed483
+handle: Test\Wiki\Widgets
+name: Wiki Widgets
+type: mixin
+
+fields:
+    gallery:
+        label: Gallery
+        type: fileupload
+        mode: image
+
+    list_items:
+        label: List Items
+        type: datatable
+        btnAddRowLabel: Add Item
+        btnDeleteRowLabel: Delete Item
+        columns:
+            text:
+                type: string
+                title: Text
+            number:
+                type: string
+                title: Number
+
+    nested_form:
+        label: Nested Form
+        type: nestedform
+        form:
+            fields:
+                platform:
+                    span: auto
+                    label: Platform
+                    type: dropdown
+                    options:
+                        facebook: Facebook
+                        linkedin: LinkedIn
+                        dribbble: Dribbble
+                        twitter: Twitter
+                        youtube: YouTube
+
+                url:
+                    span: auto
+                    label: Social Link
+                    type: text
+                    placeholder: "https://..."
