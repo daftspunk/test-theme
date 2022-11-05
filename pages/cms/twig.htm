@@ -62,6 +62,7 @@ function onStart()
     <h3>Testing Twig dump</h3>
     {{ dump(this.session.all()) }}
 
+    {{ d(this.session.all(), { foo: 'bar' }) }}
 
     <hr />
     <h3>Testing custom extension</h3>

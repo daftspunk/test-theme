@@ -16,6 +16,7 @@ function onFilterCars()
 <div class="container">
     <h1>Testing Routes</h1>
     <p>You arrived at <b>{{ this.request.url }}</b></p>
+    <p>The query param is: <strong>{{ this.param.query|default }}</strong></p>
     <p>
         <a
             href="#"
