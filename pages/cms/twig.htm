@@ -82,4 +82,19 @@ function onStart()
     <h3>Testing mail obfuscation</h3>
     <p>{{ 'octobercms@gmail.tld'|html_mailto }}</p>
     <p><a href="{{ 'octobercms@gmail.tld'|html_email }}">Test</a></p>
+
+    <h3>Testing expressions</h3>
+
+    {% if collect().all() %}
+        <p>Collection is NOT empty!</p>
+    {% else %}
+        <p>Collection is empty</p>
+    {% endif %}
+
+    {% if [] %}
+        <p>Array is NOT empty!</p>
+    {% else %}
+        <p>Array is empty</p>
+    {% endif %}
+
 </div>
