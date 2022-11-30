@@ -17,7 +17,7 @@ function onTestSelector()
     <h1>AJAX Tests</h1>
 
     <!-- Testing Custom Selector -->
-    <div data-anyselector id="customSelector">
+    <div data-anyselector id="customSelector" class="panel p-2">
         Content Will Go Here
     </div>
 
@@ -76,4 +76,69 @@ function onTestSelector()
             oc.request('#customEventForm', 'onAjax', { data: { additional: 1 } });
         }
     </script>
+
+    <hr />
+    <h3>Testing Updates via Syntax</h3>
+
+    <div id="customSelectorForUpdates" class="panel p-2">
+        Content Will Go Here
+    </div>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="{partial-with-script: '#customSelectorForUpdates'}"
+    >Test Update</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="{'partial-with-script': '!.partial-with-script'}"
+    >Test Replace With</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="{'partial-with-script': '@#customSelectorForUpdates'}"
+    >Test Append</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="{'partial-with-script': '^#customSelectorForUpdates'}"
+    >Test Prepend</a>
+
+
+    <hr />
+    <h3>Testing Updates via Attributes</h3>
+
+    <div class="row">
+        <div class="col-4">
+            <div id="customSelectorForAppend" class="update-via-attributes panel p-2" data-request-update-append>
+                Content Will Append Here
+            </div>
+        </div>
+        <div class="col-4">
+            <div id="customSelectorForPrepend" class="update-via-attributes panel p-2" data-request-update-prepend>
+                Content Will Prepend Here
+            </div>
+        </div>
+        <div class="col-4">
+            <div id="customSelectorForReplace" class="update-via-attributes panel p-2" data-request-update-replace>
+                Content Will Replace Here
+            </div>
+        </div>
+    </div>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="partial-with-script: '.update-via-attributes'"
+    >Test Update</a>
+
 </div>

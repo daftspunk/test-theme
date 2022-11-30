@@ -1,0 +1,26 @@
+##
+url = "/tailor/paginate"
+layout = "blog"
+title = "Test Pagination"
+
+[collection blog]
+handle = "Test\Blog"
+==
+<div class="container">
+    {% set posts = blog.paginate(2) %}
+    <h1>Testing Pagination</h1>
+
+    <hr />
+    <h3>Testing Default Pager</h3>
+    {{ posts|pager }}
+
+    <hr />
+    <h3>Testing Simple Pager</h3>
+    {{ posts|pager('simple') }}
+
+    <hr />
+    <h3>Testing AJAX Pager</h3>
+    {{ posts|pager('ajax', {
+        handler: 'onAjax'
+    }) }}
+</div>
