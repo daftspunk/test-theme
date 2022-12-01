@@ -112,23 +112,22 @@ function onTestSelector()
         data-request-update="{'partial-with-script': '^#customSelectorForUpdates'}"
     >Test Prepend</a>
 
-
     <hr />
     <h3>Testing Updates via Attributes</h3>
 
     <div class="row">
         <div class="col-4">
-            <div id="customSelectorForAppend" class="update-via-attributes panel p-2" data-request-update-append>
+            <div id="customSelectorForAppend" class="update-via-attributes panel p-2" data-request-update-mode="append">
                 Content Will Append Here
             </div>
         </div>
         <div class="col-4">
-            <div id="customSelectorForPrepend" class="update-via-attributes panel p-2" data-request-update-prepend>
+            <div id="customSelectorForPrepend" class="update-via-attributes panel p-2" data-request-update-mode="prepend">
                 Content Will Prepend Here
             </div>
         </div>
         <div class="col-4">
-            <div id="customSelectorForReplace" class="update-via-attributes panel p-2" data-request-update-replace>
+            <div id="customSelectorForReplace" class="update-via-attributes panel p-2" data-request-update-mode="replace">
                 Content Will Replace Here
             </div>
         </div>
@@ -140,5 +139,10 @@ function onTestSelector()
         data-request="onAjax"
         data-request-update="partial-with-script: '.update-via-attributes'"
     >Test Update</a>
+
+    <hr />
+    <h3>Testing AJAX Partial</h3>
+    {% ajaxPartial 'ajax/ajax-partial' %}
+    {% ajaxPartial 'ajax/ajax-partial-nested' %}
 
 </div>

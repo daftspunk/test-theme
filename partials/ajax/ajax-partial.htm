@@ -1,0 +1,23 @@
+==
+<?
+function onStart()
+{
+    $this['foundVar'] = 'No';
+}
+
+function onDoSomethingInPartial()
+{
+    Flash::success('This came from a partial!');
+    $this['foundVar'] = 'Yes';
+}
+?>
+==
+<a
+    href="#"
+    class="btn btn-primary"
+    data-request="onDoSomethingInPartial"
+    data-request-update="{ _self: true }"
+    data-request-flash
+>Test AJAX in Partial</a>
+
+<p>Found the variable: {{ foundVar }}</p>

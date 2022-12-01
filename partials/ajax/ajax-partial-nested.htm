@@ -1,0 +1,15 @@
+==
+<?
+function onStart()
+{
+    $this['foundVar'] = 'No';
+}
+
+function onDoSomethingInNestedPartial()
+{
+    Flash::success('This came from a nested partial!');
+    $this['foundVar'] = 'Yes';
+}
+?>
+==
+{% ajaxPartial 'ajax/ajax-partial-nested-child' %}
