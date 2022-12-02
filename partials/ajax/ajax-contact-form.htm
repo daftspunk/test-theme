@@ -1,0 +1,33 @@
+description = "Self Updating Partial"
+
+[kitchenSink]
+==
+<?
+function onSubmitContactForm()
+{
+    $this['submitted'] = true;
+    Flash::success('This came from a partial!');
+}
+?>
+==
+{% if submitted %}
+    <p>Thank you for contacting us!</p>
+{% endif %}
+{% if kitchenSink.isSubmitted %}
+    <p>Thank you for contacting us via the kitchen sink!</p>
+{% endif %}
+<button
+    class="btn btn-primary"
+    data-request="onSubmitContactForm"
+    data-request-update="{ _self: true }"
+    data-request-flash>
+    Submit Contact Form
+</button>
+<a
+    href="#"
+    class="btn btn-primary"
+    data-request="kitchenSink::onTestAjax"
+    data-request-update="{ _self: true }"
+    data-request-flash>
+    Test Component
+</a>

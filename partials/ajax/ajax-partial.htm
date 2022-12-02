@@ -1,5 +1,5 @@
 ==
-<?
+<?php
 function onStart()
 {
     $this['foundVar'] = 'No';
@@ -20,4 +20,4 @@ function onDoSomethingInPartial()
     data-request-flash
 >Test AJAX in Partial</a>
 
-<p>Found the variable: {{ foundVar }}</p>
+<p>Found the variable: {{ foundVar }} ({{ random(1, 1000) }} + {{ foo }})</p>

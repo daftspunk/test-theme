@@ -142,7 +142,17 @@ function onTestSelector()
 
     <hr />
     <h3>Testing AJAX Partial</h3>
+    {% set foo = 'bar' %}
     {% ajaxPartial 'ajax/ajax-partial' %}
     {% ajaxPartial 'ajax/ajax-partial-nested' %}
 
+    <div data-request-update-partial>
+        <button data-request="onAjax" data-request-update="{ ajax/ajax-partial: true }" class="btn btn-primary">
+            Test External Update
+        </button>
+    </div>
+
+    <hr />
+    <h3>Test Contact Form</h3>
+    {% ajaxPartial 'ajax/ajax-contact-form' %}
 </div>
