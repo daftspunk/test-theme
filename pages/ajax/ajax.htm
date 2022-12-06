@@ -155,4 +155,15 @@ function onTestSelector()
     <hr />
     <h3>Test Contact Form</h3>
     {% ajaxPartial 'ajax/ajax-contact-form' %}
+
+    <hr />
+    <h3>Test External URL</h3>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onTestOtherUrl"
+        data-request-flash
+        data-request-url="{{ 'ajax/ajax-other-url'|page }}"
+    >Test External URL</a>
 </div>
