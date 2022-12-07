@@ -1,0 +1,23 @@
+##
+url = "/content"
+layout = "default"
+==
+<div class="container">
+    <h1>Content Tests</h1>
+
+    <h3>Testing Markdown</h3>
+    {% content 'markdown.md' %}
+
+    <hr />
+    <h3>Testing HTML Markup</h3>
+    {% content 'markup.htm' %}
+
+    <hr />
+    <h3>Testing WYSIWYG</h3>
+    {% content 'wysiwyg.html' %}
+
+    <hr />
+    <h3>Testing Plaintext</h3>
+    {% content 'textfile.txt' %}
+
+</div>
