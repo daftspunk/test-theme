@@ -1,0 +1,14 @@
+
+{% set page = input('page', 1) %}
+Current page: {{ page }}
+
+[{% for post in posts %}
+    {{ post.id }}-
+{% endfor %}]
+
+{{ pager(posts, {
+    template: 'ajax',
+    request: 'onAjax',
+    data: { id: 4 },
+    update: { _self: true }
+}) }}

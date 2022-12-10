@@ -1,0 +1,16 @@
+
+{% set page = input('page', 1) %}
+Current page: {{ page }}
+
+[{% for post in posts %}
+    {{ post.id }}-
+{% endfor %}]
+
+<button
+    class="btn btn-primary"
+    data-request="onAjax"
+    data-request-update="{ _self: '@' }"
+    data-request-success="this.remove()"
+    data-attach-loading
+    data-request-data="{ page: {{ page + 1 }} }"
+>Load More (Self Destructing Button)</button>
