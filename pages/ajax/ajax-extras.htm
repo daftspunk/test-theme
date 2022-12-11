@@ -7,13 +7,6 @@ layout = "default"
 less[] = "pages/ajax.less"
 ==
 <?
-function onSubmit()
-{
-    throw new ValidationException([
-        'nameo' => 'You must give a name!',
-    ]);
-}
-
 function onTestFlash()
 {
     Flash::success('Success');
@@ -22,22 +15,6 @@ function onTestFlash()
 ==
 <div class="container">
     <h1>AJAX Extras</h1>
-    <form
-        data-request="onSubmit"
-        data-request-validate>
-        <hr />
-        <h5>Error:</h5>
-
-        <hr />
-
-        <input type="text" name="nameo" value="" />
-        <!-- <div data-validate-for="nameo">Hard coded message</div> -->
-        <div data-validate-for="nameo"></div>
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <hr />
 
     <form>
         <input type="hidden" name="input" value="1">

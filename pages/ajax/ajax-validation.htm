@@ -1,0 +1,138 @@
+##
+title = "AJAX Validation"
+url = "/ajax-validation"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<?
+function onSubmitContact()
+{
+    throw new ValidationException([
+        'nameo' => 'You must give a name!',
+    ]);
+}
+
+function onSubmit()
+{
+    $data = post();
+
+    Validator::validate($data, [
+        'name' => 'required',
+        'email' => 'required|email',
+    ]);
+
+    Flash::success('Jobs done!');
+}
+
+function onDoSomething()
+{
+    $data = post();
+
+    $rules = [
+        'name' => 'required',
+        'email' => 'required|email',
+    ];
+
+    $validation = Validator::make($data, $rules);
+
+    if ($validation->fails()) {
+        throw new ValidationException($validation);
+    }
+
+    Flash::success('Jobs done!');
+}
+
+function onCheckUsername()
+{
+    $usernameTaken = in_array(strtolower(trim(post('username'))), ['admin', 'jeff']);
+
+    if ($usernameTaken) {
+        throw new ValidationException(['username' => 'Username is taken!']);
+    }
+}
+?>
+==
+<div class="container">
+    <h1>AJAX Validation</h1>
+
+    <h3>Testing Validation Exception</h3>
+    <form
+        data-request="onSubmitContact"
+        data-request-validate>
+        <hr />
+        <h5>Error:</h5>
+
+        <hr />
+
+        <input type="text" name="nameo" value="" />
+        <!-- <div data-validate-for="nameo">Hard coded message</div> -->
+        <div data-validate-for="nameo"></div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <hr />
+    <h3>Testing Validation Service</h3>
+
+    <form data-request-validate>
+        Name: <input type="text" name="name" />
+
+        Email: <input type="text" name="email" />
+
+        <button
+            class="btn btn-primary"
+            data-request="onSubmit"
+            data-request-flash
+            data-attach-loading>Submit Form</button>
+    </form>
+
+
+    <hr />
+    <h3>Complete Example</h3>
+
+    <form
+        data-request="onDoSomething"
+        data-request-validate
+        data-request-flash>
+
+        <div>
+            <label>Username</label>
+            <input name="username" data-request="onCheckUsername" data-track-input data-attach-loading />
+            <span data-validate-for="username"></span>
+        </div>
+
+        <div>
+            <label>Name</label>
+            <input name="name" />
+            <span data-validate-for="name"></span>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input name="email" />
+            <span data-validate-for="email"></span>
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+            data-attach-loading>
+            Submit
+        </button>
+
+        <div class="alert alert-danger" data-validate-error>
+            <p data-message></p>
+        </div>
+
+    </form>
+
+    <hr />
+    <h3>Test Single Field <small>(admin and jeff are taken)</small></h3>
+
+    <form data-request-validate>
+        <input name="username" data-request="onCheckUsername" data-track-input data-attach-loading />
+        <span data-validate-for="username"></span>
+    </form>
+</div>
