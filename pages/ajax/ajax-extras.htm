@@ -7,20 +7,64 @@ layout = "default"
 less[] = "pages/ajax.less"
 ==
 <?
+function onTestRedirect()
+{
+    Flash::success('Successful refresh');
+    return Redirect::refresh();
+}
+
 function onTestFlash()
 {
-    Flash::success('Success');
+    sleep(1);
+    Flash::warning('Warning given');
+}
+
+function onCheckout()
+{
+    sleep(1);
+    Flash::info('Checkout complete');
+}
+
+function onCancel()
+{
+    sleep(1);
+    Flash::warning('Checkout cancelled');
+}
+
+function onSave()
+{
+    Flash::info('Saved, probably');
 }
 ?>
 ==
 <div class="container">
     <h1>AJAX Extras</h1>
 
+    {% flash %}
+        <p
+            data-control="flash-message"
+            class="oc-hide"
+            data-type="{{ type }}"
+            data-interval="5">
+            {{ message }} (Type: {{ type }})
+        </p>
+    {% endflash %}
+
+    <div class="ajax-in-progress card text-bg-success mb-3">
+        <div class="card-body is-waiting">
+            The request is waiting
+        </div>
+        <div class="card-body in-progress">
+            There is a request in progress
+        </div>
+    </div>
+
     <form>
         <input type="hidden" name="input" value="1">
         <a
             href="#"
             data-request-flash
+            data-request-progress-bar="false"
             data-request="onTestFlash">Test Flash</a>
     </form>
 
@@ -31,6 +75,86 @@ function onTestFlash()
         <a
             href="#"
             data-attach-loading
-            data-request="onTestFlash">Test Attach Loader</a>
+            data-request="onTestRedirect">Test Attach Loader (Redirect)</a>
     </form>
+
+    <hr />
+
+    <form>
+        <a
+            href="#"
+            data-request-loading=".custom-loader"
+            data-request-flash
+            data-request="onTestFlash">Test Custom Loader</a>
+
+        <div style="display:none" class="custom-loader"></div>
+    </form>
+
+    <hr />
+
+    <form>
+        <input type="text" name="name" />
+
+        <button class="btn btn-info" data-request="onCheckout" data-request-flash>
+            Checkout
+        </button>
+        <button class="btn btn-warning" data-request="onCancel" data-request-flash>
+            Cancel
+        </button>
+
+        <div class="is-payment-loading">
+            Processing Payment...
+        </div>
+    </form>
+
+    <hr />
+
+    <form>
+        {% ajaxPartial 'flash-messages' %}
+
+        Title: <input type="text" name="title" />
+
+        <button
+            class="btn btn-secondary"
+            data-request="onSave"
+            data-request-flash="flash-messages">
+            Save
+        </button>
+
+        <button
+            class="btn btn-secondary"
+            data-request="onSave"
+            data-request-update="{ flash-messages: true }"
+            data-request-flash>
+            Save (Combined)
+        </button>
+
+        <button
+            class="btn btn-secondary"
+            data-request="onTestRedirect">
+            Redirect
+        </button>
+    </form>
+
 </div>
+
+<script>
+    if (!window.loadedPromise) {
+        window.loadedPromise = true;
+        addEventListener('ajax:promise', function(event) {
+            console.log('A new request has started');
+
+            event.target.closest('form').querySelectorAll('input').forEach(function(el) {
+                el.disabled = true;
+            });
+        });
+
+        addEventListener('ajax:always', function() {
+            console.log('A request has ended');
+
+            event.target.closest('form').querySelectorAll('input').forEach(function(el) {
+                el.disabled = false;
+            });
+        });
+    }
+</script>
