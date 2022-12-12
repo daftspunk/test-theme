@@ -138,23 +138,20 @@ function onSave()
 
 </div>
 
-<script>
-    if (!window.loadedPromise) {
-        window.loadedPromise = true;
-        addEventListener('ajax:promise', function(event) {
-            console.log('A new request has started');
+<script data-turbo-eval-once="uniqueKey">
+    addEventListener('ajax:promise', function(event) {
+        console.log('A new request has started');
 
-            event.target.closest('form').querySelectorAll('input').forEach(function(el) {
-                el.disabled = true;
-            });
+        event.target.closest('form').querySelectorAll('input').forEach(function(el) {
+            el.disabled = true;
         });
+    });
 
-        addEventListener('ajax:always', function() {
-            console.log('A request has ended');
+    addEventListener('ajax:always', function() {
+        console.log('A request has ended');
 
-            event.target.closest('form').querySelectorAll('input').forEach(function(el) {
-                el.disabled = false;
-            });
+        event.target.closest('form').querySelectorAll('input').forEach(function(el) {
+            el.disabled = false;
         });
-    }
+    });
 </script>
