@@ -41,7 +41,12 @@ function onDoSomething()
         throw new ValidationException($validation);
     }
 
-    Flash::success('Jobs done!');
+    if (time() % 2) {
+        Flash::warning('Jobs almost done...');
+    }
+    else {
+        Flash::success('Jobs done!');
+    }
 }
 
 function onCheckUsername()
@@ -95,7 +100,7 @@ function onCheckUsername()
     <form
         data-request="onDoSomething"
         data-request-validate
-        data-request-flash>
+        data-request-flash="success,warning">
 
         <div>
             <label>Username</label>
