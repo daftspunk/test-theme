@@ -5,14 +5,19 @@ title = "Test Pagination"
 
 [collection blog]
 handle = "Test\Blog"
+
+[collection category]
+handle = "Test\Blog\Categories"
 ==
 <div class="container">
-    {% set posts = blog.paginateAtPage(2, input('page')) %}
+    {% set posts = blog.paginate(2) %}
+    {% set categories = blog.paginateCustom(2, 'categoryPage') %}
+
     <h1>Testing Pagination</h1>
 
     <hr />
     <h3>Testing Default Pager</h3>
-    {{ pager(posts, { template: 'default' }) }}
+    {{ pager(posts) }}
 
     <hr />
     <h3>Testing Simple Pager</h3>
@@ -24,4 +29,8 @@ handle = "Test\Blog"
 
     <h3>Testing AJAX Load More</h3>
     {% ajaxPartial 'tailor/ajax-loadmore' %}
+
+    <hr />
+    <h3>Testing Multi Pager</h3>
+    {{ pager(categories, { withQuery: true }) }}
 </div>
