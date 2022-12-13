@@ -6,8 +6,7 @@ Current page: {{ page }}
     {{ post.id }}-
 {% endfor %}]
 
-{{ pager(posts, {
-    template: 'ajax',
+{{ ajaxPager(posts, {
     request: 'onAjax',
     data: { id: 4 },
     update: { _self: true }
