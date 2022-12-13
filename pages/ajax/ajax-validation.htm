@@ -31,7 +31,7 @@ function onDoSomething()
     $data = post();
 
     $rules = [
-        'name' => 'required',
+        'username' => 'required',
         'email' => 'required|email',
     ];
 
@@ -40,6 +40,9 @@ function onDoSomething()
     if ($validation->fails()) {
         throw new ValidationException($validation);
     }
+
+    // Check the username again
+    $this->onCheckUsername();
 
     if (time() % 2) {
         Flash::warning('Jobs almost done...');
@@ -68,11 +71,11 @@ function onCheckUsername()
         data-request-validate>
         <hr />
         <h5>Error:</h5>
+        <div data-validate-error></div>
 
         <hr />
 
         <input type="text" name="nameo" value="" />
-        <!-- <div data-validate-for="nameo">Hard coded message</div> -->
         <div data-validate-for="nameo"></div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -106,12 +109,6 @@ function onCheckUsername()
             <label>Username</label>
             <input name="username" data-request="onCheckUsername" data-track-input data-attach-loading />
             <span data-validate-for="username"></span>
-        </div>
-
-        <div>
-            <label>Name</label>
-            <input name="name" />
-            <span data-validate-for="name"></span>
         </div>
 
         <div>
