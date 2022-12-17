@@ -1,0 +1,20 @@
+<div>
+    {% set launchDate = carbon('2025-01-01') %}
+    {% set days = launchDate.diffInDays %}
+    {% set hours = launchDate.subDays(days).diffInHours %}
+    {% set minutes = launchDate.subHours(hours).diffInMinutes %}
+    {% set seconds = launchDate.subMinutes(minutes).diffInSeconds %}
+
+    <h2>
+        Launch in...
+        {{ days }} days,
+        {{ hours }} hours,
+        {{ minutes }} minutes,
+        {{ seconds }} seconds
+    </h2>
+</div>
+
+<div
+    data-request="onAjax"
+    data-request-update="_self: true"
+    data-auto-submit="2000"></div>

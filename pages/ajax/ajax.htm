@@ -16,6 +16,14 @@ function onTestSelector()
 <div class="container">
     <h1>AJAX Tests</h1>
 
+    <div class="card text-bg-success mb-3">
+        {% ajaxPartial 'ajax/ajax-lazy-content' lazy body %}
+            <div class="card-body">
+                <em>Lazy Loading Content...</em>
+            </div>
+        {% endpartial %}
+    </div>
+
     <!-- Testing Custom Selector -->
     <div data-anyselector id="customSelector" class="panel p-2">
         Content Will Go Here
@@ -76,6 +84,11 @@ function onTestSelector()
             oc.request('#customEventForm', 'onAjax', { data: { additional: 1 } });
         }
     </script>
+
+    <hr />
+    <h3>Testing Polling Updates</h3>
+
+    {% ajaxPartial 'ajax/ajax-polling-content' %}
 
     <hr />
     <h3>Testing Updates via Syntax</h3>

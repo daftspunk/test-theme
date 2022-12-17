@@ -1,0 +1,53 @@
+##
+title = "AJAX Modals"
+url = "/ajax-modals"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<div class="container">
+    <h1>AJAX Modal</h1>
+
+    <!-- Button trigger modal -->
+    <button
+        type="button"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-update="ajax/ajax-modal: '#exampleModalContent'"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal">
+    <!-- Content updated by AJAX -->
+    <div class="modal-dialog" id="exampleModalContent"></div>
+
+    <!-- Modal Loading -->
+    <div class="modal-dialog modal-loading">
+        <div class="modal-content">
+            <div class="modal-header">
+                Loading
+            </div>
+            <div class="modal-body">
+                <p>Please wait...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hide the Loading Pane -->
+<style>
+    .modal-dialog[data-ajax-updating],
+    .modal-loading {
+        display: none;
+    }
+
+    .modal-dialog[data-ajax-updating] + .modal-loading {
+        display: block;
+    }
+</style>
