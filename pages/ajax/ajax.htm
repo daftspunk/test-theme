@@ -7,6 +7,11 @@ layout = "default"
 less[] = "pages/ajax.less"
 ==
 <?
+function onTraceLog()
+{
+    traceLog(input());
+}
+
 function onTestSelector()
 {
     return ['=[data-anyselector]' => 'Success <span>Should Be Red</span>'];
@@ -170,7 +175,7 @@ function onTestSelector()
     {% ajaxPartial 'ajax/ajax-contact-form' %}
 
     <hr />
-    <h3>Test External URL</h3>
+    <h3>Test Custom URL</h3>
 
     <a
         href="#"
@@ -179,4 +184,11 @@ function onTestSelector()
         data-request-flash
         data-request-url="{{ 'ajax/ajax-other-url'|page }}"
     >Test External URL</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onTraceLog"
+        data-request-query="{ page: 6 }"
+    >Test Query Data</a>
 </div>
