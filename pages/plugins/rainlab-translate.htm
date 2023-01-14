@@ -1,0 +1,25 @@
+##
+title = "RainLab Translate"
+url = "/plugins/rainlab/translate"
+layout = "default"
+
+[sitePicker]
+==
+<?
+function onStart()
+{
+}
+?>
+==
+<div class="container">
+    <h1>Testing Translate</h1>
+
+    <pre>
+    this.request.url|localeUrl('de') → {{ this.request.url|localeUrl('de') }}
+
+    this.request.path|localeUrl('de') → {{ this.request.path|localeUrl('de') }}
+
+    sitePicker.sites.where('hard_locale', 'de').first().url → {{ sitePicker.sites.where('hard_locale', 'de').first().url }}
+
+    'ajax/ajax-turbo'|localePage('de') → {{ 'ajax/ajax-turbo'|localePage('de') }}
+</div>
