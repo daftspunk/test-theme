@@ -191,4 +191,31 @@ function onTestSelector()
         data-request="onTraceLog"
         data-request-query="{ page: 6 }"
     >Test Query Data</a>
+
+    <hr />
+    <h3>Test Redirects</h3>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-redirect="{{ 'cms/locale'|page }}"
+    >Test Redirect URL</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-redirect="{{ 'cms/locale'|page }}"
+        data-browser-redirect="referrer"
+    >Test Redirect Referrer</a>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onAjax"
+        data-request-redirect="{{ 'cms/locale'|page }}"
+        data-browser-redirect="back"
+    >Test Redirect Back Button</a>
+
 </div>
