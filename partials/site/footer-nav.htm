@@ -1,0 +1,29 @@
+[collection sitemap]
+handle = "Site\Sitemap"
+==
+{% macro render_sitemap_item(item, reference) %}
+    {% import _self as nav %}
+    {% if reference.items %}
+        <ul>
+            {% for child in reference.items %}
+                {{ nav.render_sitemap_item(item, child) }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <li>
+            {% if reference.isActive %}<strong>{% endif %}
+            <a href="{{ reference.url }}">{{ reference.title }}</a>
+            (lastmod: {{ reference.mtime|date('c') }})
+            {% if reference.isActive %}</strong>{% endif %}
+        </li>
+    {% endif  %}
+{% endmacro %}
+{% import _self as nav %}
+<ul>
+    {% for item in sitemap %}
+        {{ nav.render_sitemap_item(
+            item,
+            link(item.reference)
+        ) }}
+    {% endfor %}
+</ul>
