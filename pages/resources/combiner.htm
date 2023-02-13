@@ -8,4 +8,26 @@ layout = "default"
         <li><a href="{{ ['assets/less/combiner.less']|theme }}" target="_blank">LESS stylesheet</a></li>
         <li><a href="{{ ['assets/scss/combiner.scss']|theme }}" target="_blank">SCSS stylesheet</a></li>
     </ul>
+
+    <h1>SVG Test</h1>
+    <p>Both boxes should contain a gradient</p>
+
+    <link href="{{ ['assets/css/svg.css']|theme }}" rel="stylesheet">
+
+    <svg width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="gradient" gradientTransform="rotate(90)">
+                <stop offset="0%" stop-color="#D37C00"></stop>
+                <stop offset="100%" stop-color="#FFD34F"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <svg>
+        <rect width="300" height="150" style="fill:url(#gradient)" />
+    </svg>
+
+    <svg>
+        <rect width="300" height="150" id="mySvg" />
+    </svg>
 </div>
