@@ -7,11 +7,21 @@ layout = "default"
 less[] = "pages/ajax.less"
 ==
 <?
-function onSubmitContact()
+function onSubmitAlwaysInvalid()
 {
     throw new ValidationException([
         'nameo' => 'You must give a name!',
     ]);
+}
+
+function onSubmitWithException()
+{
+    throw new ApplicationException('Error saving the profile!');
+}
+
+function onSubmitWithSuccess()
+{
+    Flash::success('Submission complete!');
 }
 
 function onSubmit()
@@ -67,7 +77,7 @@ function onCheckUsername()
 
     <h3>Testing Validation Exception</h3>
     <form
-        data-request="onSubmitContact"
+        data-request="onSubmitAlwaysInvalid"
         data-request-validate>
         <hr />
         <h5>Error:</h5>
