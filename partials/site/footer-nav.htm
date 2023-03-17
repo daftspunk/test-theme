@@ -5,7 +5,7 @@ handle = "Site\Sitemap"
     {% import _self as nav %}
     <li>
         {% if reference.isActive %}<strong>{% endif %}
-        <a href="{{ reference.url }}">{{ reference.title }}</a>
+        <a href="{{ reference.url }}" data-turbo-no-scroll>{{ reference.title }}</a>
         (lastmod: {{ reference.mtime|date('c') }})
         {% if reference.isActive %}</strong>{% endif %}
         {% if reference.items %}
