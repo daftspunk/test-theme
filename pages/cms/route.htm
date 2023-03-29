@@ -7,6 +7,11 @@ layout = "default"
 defaultView = "0"
 ==
 <?
+function onStart()
+{
+    $this->page->test_page_var = 'foobar';
+}
+
 function onFilterCars()
 {
     Flash::success('This came from the page');
@@ -33,9 +38,17 @@ function onFilterCars()
         </a>
     </p>
     <hr />
+    <h2>Safe Mode Tests</h2>
+    <p>
+        Custom page variable: {{ this.page.test_page_var }}
+    </p>
+    <p>
+        {{ this.session.get('any_item') }}
+    </p>
+    <hr />
     <p>
         pageUrl is blocked:
         {# Breaks Security Policy use 'index'|page instead #}
-        {{ this.controller.pageUrl('index') }}
+        {# {{ this.controller.pageUrl('index') }} #}
     </p>
 </div>
