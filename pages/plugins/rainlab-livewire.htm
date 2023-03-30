@@ -1,0 +1,15 @@
+##
+url = "/rainlablivewire/component"
+layout = "default"
+==
+{% put scripts %}
+    {{ livewireScripts() }}
+{% endput %}
+
+{% put styles %}
+    {{ livewireStyles() }}
+{% endput %}
+
+<div class="container">
+    {% livewire 'counter' %}
+</div>
