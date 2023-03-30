@@ -1,0 +1,39 @@
+==
+<?
+function onExample5() {
+    try {
+        $model = Tailor\Models\EntryRecord::inSection('Issues\AjaxExample');
+        $model->title = 'Something';
+        $model->name = Input::post('name');
+        $model->is_enabled = true;
+        $model->save();
+
+        // Session::forget('_old_input');
+        Flash::success('Sent value is ok.');
+
+    }
+    catch (October\Rain\Exception\ValidationException $ex) {
+        $this->controller->setStatusCode(406);
+        Flash::error(implode(' ', (array) $ex->getErrors()->all()));
+    }
+    catch (Exception $ex) {
+        $this->controller->setStatusCode(406);
+        Flash::error($ex->getMessage());
+    }
+}
+?>
+==
+{% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+        {{ message }}
+    </div>
+{% endflash %}
+
+{{ form_ajax('onExample5', { 'id': 'myForm5', 'data-request-update': '{ _self: true }' }) }}
+    <div class="mb-1">
+        {{ form_text('name', form_value('name'), { class: 'form-control', 'placeholder': 'Type something, send, then type "correct" and send...' }) }}
+    </div>
+    <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+{{ form_close() }}

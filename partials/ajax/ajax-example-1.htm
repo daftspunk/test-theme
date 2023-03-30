@@ -1,0 +1,12 @@
+==
+<?
+function onExample1() {
+    throw new NotFoundException('This is NotFoundException.');
+}
+?>
+==
+{{ form_ajax('onExample1', { 'id': 'myForm1', 'data-request-update': '{ _self: true }' }) }}
+    <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+{{ form_close() }}

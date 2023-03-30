@@ -1,0 +1,34 @@
+==
+<?
+function onExample4() {
+    try {
+        $validator = Validator::make(['name' => Input::post('name')], ['name' => 'required|in:correct']);
+
+        if ($validator->fails()) {
+            throw new Exception(implode(' ', $validator->messages()->all()));
+        }
+
+        Flash::success('Sent value is ok.');
+
+    }
+    catch (Exception $ex) {
+        $this->controller->setStatusCode(406);
+        Flash::error($ex->getMessage());
+    }
+}
+?>
+==
+{% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+        {{ message }}
+    </div>
+{% endflash %}
+
+{{ form_ajax('onExample4', { 'id': 'myForm4', 'data-request-update': '{ _self: true }' }) }}
+    <div class="mb-1">
+        {{ form_text('name', form_value('name'), { class: 'form-control', 'placeholder': 'Type something, send, then type "correct" and send...' }) }}
+    </div>
+    <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+{{ form_close() }}

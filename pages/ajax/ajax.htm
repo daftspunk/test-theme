@@ -218,4 +218,42 @@ function onTestSelector()
         data-browser-redirect="back"
     >Test Redirect Back Button</a>
 
+    <h1>AJAX Exception Tests</h1>
+
+    <div class="my-3">
+        <h3>Example 1</h3>
+        <p>Send form from self-updating AJAX partial and throw back NotFoundException...</p>
+        {% ajaxPartial 'ajax/ajax-example-1' %}
+        <p><em>This is as expected.</em></p>
+        <hr />
+    </div>
+    <div class="my-3">
+        <h3>Example 2</h3>
+        <p>Send form from self-updating AJAX partial and throw back ApplicationException...</p>
+        {% ajaxPartial 'ajax/ajax-example-2' %}
+        <p><em>Expected behavior: Simple Javascript alert with text message as before, not another Exception thrown by <code>/vendor/twig/twig/src/Template.php</code>.</em></p>
+        <hr />
+    </div>
+    <div class="my-3">
+        <h3>Example 3</h3>
+        <p>Send form from self-updating AJAX partial and throw back AjaxException...</p>
+        {% ajaxPartial 'ajax/ajax-example-3' %}
+        <p><em>Expected behavior: Ajax Exception message catched by form's <code>'data-request-error': 'console.log(data.message)'</code>, but exception was overwritten by another one thrown by <code>/vendor/twig/twig/src/Template.php</code>.</em></p>
+        <hr />
+    </div>
+    <div class="my-3">
+        <h3>Example 4</h3>
+        <p>Send form from self-updating AJAX partial with wrong value (type whatever) and then with correct (type: correct). Validation is in AJAX handler.</p>
+        {% ajaxPartial 'ajax/ajax-example-4' %}
+        <p><em>This is as expected.</em></p>
+        <hr />
+    </div>
+    <div class="my-3">
+        <h3>Example 5</h3>
+        <p>Send form from self-updating AJAX partial with wrong value (type whatever) and then with correct (type: correct). Validation is in Model.</p>
+        <p>This issue happens in all kind of AJAX cycle when filling and throwing Validation Exception from Tailor Model, not only in self-updated ajaxPartial. Maybe a feature:-)</p>
+        {% ajaxPartial 'ajax/ajax-example-5' %}
+        <p><em>Expected behavior: When success, no previous form wrong state returned. Can be simply fixed with adding <code>Session::forget('_old_input')</code> to handler.</em></p>
+        <hr />
+    </div>
 </div>

@@ -1,0 +1,12 @@
+==
+<?
+function onExample3() {
+    throw new AjaxException(['message' => 'This is AjaxException.']);
+}
+?>
+==
+{{ form_ajax('onExample3', { 'id': 'myForm3', 'data-request-update': '{ _self: true }', 'data-request-error': 'console.log(data.message)' }) }}
+    <div class="mb-1">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+{{ form_close() }}
