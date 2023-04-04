@@ -1,0 +1,48 @@
+##
+title = "AJAX Controls"
+url = "/ajax-controls"
+layout = "default"
+
+[resources]
+less[] = "pages/ajax.less"
+==
+<script>
+oc.registerControl('hello', class extends oc.ControlBase {
+    init() {
+        this.$output = this.element.querySelector('span.output');
+        this.$name = this.element.querySelector('input.name');
+    }
+
+    connect() {
+        this.listen('click', 'button.greet', this.onGreet);
+    }
+
+    onGreet() {
+        this.$output.textContent = `Hello, ${this.$name.value}!`;
+    }
+
+    testMethod() {
+        console.log('You got it!');
+    }
+});
+</script>
+<div class="container">
+    <h1>AJAX Controls</h1>
+
+    <div data-control="hello">
+        <div class="input-group py-3">
+            <input type="text" class="name form-control" />
+
+            <button class="greet btn btn-primary">
+                Greet
+            </button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <span class="output">
+                    Enter your name above
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
