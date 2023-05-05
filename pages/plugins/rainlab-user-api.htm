@@ -1,0 +1,69 @@
+##
+title = "RainLab User API"
+url = "/rainlabuser/api/:action"
+layout = "default"
+
+[resetPassword]
+[account]
+[session]
+verifyToken = 1
+==
+<?
+function onSignin()
+{
+    // Login but don't save anything in the session
+    Auth::once([
+        'login' => post('login'),
+        'password' => post('password')
+    ]);
+}
+?>
+==
+{% if this.param.action == 'me' %}
+    {% set user = session.user %}
+    {% if not user %}
+        {% do abort(403, 'Access Denied') %}
+    {% endif %}
+    {% do response({ data: {
+        id: user.id,
+        email: user.email,
+        first_name: user.name,
+        last_name: user.surname
+    }}) %}
+{% endif %}
+
+{% if this.param.action == 'signin' %}
+    {% do response(
+        ajaxHandler('onSignin').withVars({
+            token: session.token()
+        })
+    ) %}
+{% endif %}
+
+{% if this.param.action == 'refresh' %}
+    {% do response({
+        data: {
+            token: session.token()
+        }
+    }) %}
+{% endif %}
+
+{% if this.param.action == 'register' %}
+    {% do response(ajaxHandler('onRegister')) %}
+{% endif %}
+
+{% if this.param.action == 'confirm' %}
+    {% do response(ajaxHandler('onActivate')) %}
+{% endif %}
+
+{% if this.param.action == 'recover' %}
+    {% do response(ajaxHandler('onRestorePassword')) %}
+{% endif %}
+
+{% if this.param.action == 'reset' %}
+    {% do response(ajaxHandler('onResetPassword')) %}
+{% endif %}
+
+{% if this.param.action == 'logout' %}
+    {% do response(ajaxHandler('onLogout')) %}
+{% endif %}

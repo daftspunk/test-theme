@@ -1,0 +1,92 @@
+##
+title = "RainLab User"
+url = "/rainlabuser/session"
+layout = "default"
+==
+<div class="container">
+    <h1>Login Test</h1>
+
+    <!-- Login Form -->
+    <form method="post" id="loginForm">
+        <div class="row">
+            <div class="col-5">
+                <input type="text" id="inputLogin" class="form-control" placeholder="Email address or username" required autofocus>
+            </div>
+
+            <div class="col-5">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" type="submit">Sign In</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Get Me -->
+    <button id="getMeButton" class="btn btn-secondary btn-lg">
+        Get Profile
+    </button>
+</div>
+
+<script>
+    const store = {};
+    const loginButton = document.querySelector('#loginForm');
+    const getMeButton = document.querySelector('#getMeButton');
+    const form = document.querySelector('#loginForm');
+
+    // Inserts the jwt to the store object
+    store.setJWT = function (data) {
+        this.JWT = data;
+    };
+
+    loginButton.addEventListener('submit', async(evt) => {
+        evt.preventDefault();
+
+        const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'signin' }) }}', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                login: form.inputLogin.value,
+                password: form.inputPassword.value
+            })
+        });
+
+        if (res.status >= 200 && res.status <= 299) {
+            const payload = await res.text(),
+                data = payload && JSON.parse(payload).data || {},
+                jwt = data.token;
+
+            store.setJWT(jwt);
+        }
+        else {
+            // Handle errors
+            console.log(res.status, res.statusText);
+        }
+    });
+
+    getMeButton.addEventListener('click', async(evt) => {
+        if (!store.JWT) {
+            console.log('Missing token!');
+            return;
+        }
+
+        const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'me' }) }}', {
+            headers: {
+                'Authorization': `Bearer ${store.JWT}`
+            }
+        });
+
+        const payload = await res.text(),
+            data = JSON.parse(payload).data || {},
+            userId = data.id;
+
+        if (userId) {
+            console.log("Logged in as User ID: " + userId);
+        }
+        else {
+            console.log("User not found!");
+        }
+    });
+</script>
