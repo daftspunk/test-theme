@@ -1,0 +1,41 @@
+##
+url = "/tailor/multisection/:id/:category_id"
+layout = "blog"
+title = "Test Pagination"
+
+[section post]
+handle = "Test\Blog"
+identifier = "id"
+value = "{{ :id }}"
+
+[section category]
+handle = "Test\Blog\Categories"
+entrySlug = "{{ :category_id }}"
+entryColumn = "id"
+==
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Post</h1>
+            {% if post is empty %}
+                <p>Not found</p>
+            {% else %}
+                <dl>
+                    <dt>Title</dt>
+                    <dd>{{ post.title }}</dd>
+                </dl>
+            {% endif %}
+        </div>
+        <div class="col-6">
+            <h1>Category</h1>
+            {% if category is empty %}
+                <p>Not found</p>
+            {% else %}
+                <dl>
+                    <dt>Title</dt>
+                    <dd>{{ category.title }}</dd>
+                </dl>
+            {% endif %}
+        </div>
+    </div>
+</div>
