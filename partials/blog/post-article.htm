@@ -23,8 +23,8 @@
     </p>
 
     {% if post.entry_type == 'markdown_post' %}
-        {{ post.content|md }}
+        {{ post.content|md|content }}
     {% else %}
-        {{ post.content|raw }}
+        {{ post.content|content }}
     {% endif %}
 </article>

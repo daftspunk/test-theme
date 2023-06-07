@@ -1,0 +1,31 @@
+## partials/blog-post-reference.htm
+
+[viewBag]
+snippetCode = "blogPostReference"
+snippetName = "Blog Post Reference"
+snippetDescription = "Display a reference to a blog post"
+snippetProperties[post_id][title] = "Blog Post ID"
+snippetProperties[post_id][type] = "string"
+
+[section post]
+handle = "Test\Blog"
+identifier = "id"
+value = "{{ post_id }}"
+==
+{% if post is not empty %}
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4>{{ post.title }}</h4>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ 'blog/post'|page({ slug: post.slug }) }}" class="stretched-link">
+                    {{ post.categories.first.title|default('') }}
+                </a>
+                <small class="text-muted">{{ post.published_at_date|date('j M Y') }}</small>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <!-- Post Missing: Unable to find entry -->
+{% endif %}

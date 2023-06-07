@@ -1,0 +1,56 @@
+## File: partials/snippets/youtube-video.htm
+
+[viewBag]
+snippetCode = "youtubeVideo"
+snippetName = "YouTube Video"
+snippetDescription = "Embed a Youtube Video on the page"
+snippetProperties[url][title] = "Video URL"
+snippetProperties[url][type] = "string"
+snippetProperties[start_at][title] = "Start At"
+snippetProperties[url][type] = "string"
+==
+<?
+function urlToCode($link = '')
+{
+    $parts = parse_url($link);
+    if (isset($parts['query'])) {
+        parse_str($parts['query'], $qs);
+        if (isset($qs['v'])){
+            return $qs['v'];
+        }
+        elseif (isset($qs['vi'])){
+            return $qs['vi'];
+        }
+    }
+    if (isset($parts['path'])){
+        $path = explode('/', trim($parts['path'], '/'));
+        return $path[count($path)-1];
+    }
+    return null;
+}
+
+function timeToSeconds($time = '') {
+    $parts = explode(':', $time);
+    if (count($parts) === 3) {
+        return $parts[0] * 3600 + $parts[1] * 60 + $parts[2];
+    }
+    elseif (count($parts) === 2) {
+        return $parts[0] * 60 + $parts[1];
+    }
+    return $time ?: 0;
+}
+?>
+==
+{% set videoCode = this.urlToCode(url) %}
+{% if videoCode %}
+    <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{ videoCode }}?start={{ this.timeToSeconds(start_at) }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+{% else %}
+    <!-- Video Missing: Unable to parse URL -->
+{% endif %}
