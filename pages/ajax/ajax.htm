@@ -16,6 +16,17 @@ function onTestSelector()
 {
     return ['=[data-anyselector]' => 'Success <span>Should Be Red</span>'];
 }
+
+function onAjaxBrowserEvent()
+{
+    if (post('force')) {
+        Flash::success('Done!');
+        return;
+    }
+
+    $this->dispatchBrowserEvent('test:browserevent', ['name' => 'Jeff']);
+    throw new AjaxException;
+}
 ?>
 ==
 <div class="container">
@@ -88,6 +99,20 @@ function onTestSelector()
             console.log('Running Request');
             oc.request('#customEventForm', 'onAjax', { data: { additional: 1 } });
         }
+    </script>
+
+    <form id="browserEventForm">
+        <a href="javascript:;" data-request="onAjaxBrowserEvent" data-request-flash>Trigger Browser Event</a>
+    </form>
+
+    <script>
+        addEventListener('test:browserevent', function (event) {
+            if (confirm(event.detail.name + ' user has updated this document, proceed?')) {
+                oc.request(event.target, null, { data: {
+                    force: true
+                }});
+            }
+        });
     </script>
 
     <hr />
