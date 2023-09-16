@@ -58,7 +58,7 @@ function onUploadFile()
 function onUploadFiles()
 {
     Request::validate([
-        'uploaded_files' => 'required|image|max:1024',
+        'uploaded_files.*' => 'required|image|max:1024',
     ]);
 }
 
@@ -107,3 +107,9 @@ function onUploadFiles()
         <button class="btn btn-primary">Upload Multiple</button>
     </form>
 </div>
+
+<script>
+    addEventListener('ajax:invalid-field', function (event) {
+        console.log(event);
+    });
+</script>
