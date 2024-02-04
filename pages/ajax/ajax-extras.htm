@@ -136,6 +136,26 @@ function onSave()
         </button>
     </form>
 
+
+    <hr />
+
+    <form>
+        <a
+            href="#"
+            data-request-flash
+            data-request-message="Loading..."
+            data-request="onTestFlash">Test Progress Message</a>
+    </form>
+
+    <form>
+        <a
+            href="#"
+            onclick="oc.request(this, 'onTestFlash', {
+                flash:true,
+                message: 'Loading via JS',
+            }); return false">Test Progress Message (JS)</a>
+    </form>
+
 </div>
 
 <script data-turbo-eval-once="uniqueKey">
