@@ -27,6 +27,12 @@ function onAjaxBrowserEvent()
     $this->dispatchBrowserEvent('test:browserevent', ['name' => 'Jeff']);
     throw new AjaxException;
 }
+
+function onTestAbort()
+{
+    sleep(2);
+    throw new ApplicationException('Abort failed!');
+}
 ?>
 ==
 <div class="container">
@@ -94,10 +100,24 @@ function onAjaxBrowserEvent()
         <a href="javascript:runCustomEvent()">Trigger Custom Event</a>
     </form>
 
+    <form id="customAbortForm">
+        <input type="hidden" name="input" value="1">
+        <a href="javascript:runCustomEventWithAbort()">Trigger Aborted Event</a>
+    </form>
+
     <script>
         function runCustomEvent() {
             console.log('Running Request');
             oc.request('#customEventForm', 'onAjax', { data: { additional: 1 } });
+        }
+
+        function runCustomEventWithAbort() {
+            console.log('Running Request');
+            var request = oc.request('#customAbortForm', 'onTestAbort', { data: { additional: 1 } });
+            setTimeout(function() {
+                console.log('Aborting Request');
+                request.abort();
+            }, 1000)
         }
     </script>
 
