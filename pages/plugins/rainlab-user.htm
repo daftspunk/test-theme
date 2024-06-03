@@ -30,7 +30,7 @@ layout = "default"
 
 <script>
     const store = {};
-    const loginButton = document.querySelector('#loginForm');
+    const loginForm = document.querySelector('#loginForm');
     const getMeButton = document.querySelector('#getMeButton');
     const form = document.querySelector('#loginForm');
 
@@ -39,7 +39,7 @@ layout = "default"
         this.JWT = data;
     };
 
-    loginButton.addEventListener('submit', async(evt) => {
+    loginForm.addEventListener('submit', async(evt) => {
         evt.preventDefault();
 
         const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'signin' }) }}', {
@@ -53,12 +53,14 @@ layout = "default"
             })
         });
 
+
         if (res.status >= 200 && res.status <= 299) {
             const payload = await res.text(),
                 data = payload && JSON.parse(payload).data || {},
                 jwt = data.token;
 
             store.setJWT(jwt);
+            console.log('Stored token: ' + jwt);
         }
         else {
             // Handle errors
@@ -78,15 +80,22 @@ layout = "default"
             }
         });
 
-        const payload = await res.text(),
-            data = JSON.parse(payload).data || {},
-            userId = data.id;
+        if (res.status >= 200 && res.status <= 299) {
+            const payload = await res.text(),
+                data = JSON.parse(payload).data || {},
+                userId = data.id;
 
-        if (userId) {
-            console.log("Logged in as User ID: " + userId);
+            if (userId) {
+                console.log("Logged in as User ID: " + userId);
+            }
+            else {
+                console.log("User not found!");
+            }
         }
         else {
-            console.log("User not found!");
+            // Handle errors
+            console.log(res.status, res.statusText);
         }
+
     });
 </script>
