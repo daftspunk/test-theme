@@ -10,7 +10,7 @@ layout = "default"
     <form method="post" id="loginForm">
         <div class="row">
             <div class="col-5">
-                <input type="text" id="inputLogin" class="form-control" placeholder="Email address or username" required autofocus>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Email address or username" required autofocus>
             </div>
 
             <div class="col-5">
@@ -48,7 +48,7 @@ layout = "default"
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
-                login: form.inputLogin.value,
+                email: form.inputEmail.value,
                 password: form.inputPassword.value
             })
         });

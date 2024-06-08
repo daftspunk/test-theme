@@ -3,17 +3,18 @@ title = "RainLab User API"
 url = "/rainlabuser/api/:action"
 layout = "default"
 
+[authentication]
 [resetPassword]
 [account]
 [session]
 checkToken = 1
 ==
 <?
-function onSignin()
+function onSigninCustom()
 {
     // Login but don't save anything in the session
     Auth::once([
-        'login' => post('login'),
+        'email' => post('email'),
         'password' => post('password')
     ]);
 }
