@@ -22,9 +22,16 @@ layout = "default"
         </div>
     </form>
 
+    <hr />
+
     <!-- Get Me -->
     <button id="getMeButton" class="btn btn-secondary btn-lg">
         Get Profile
+    </button>
+
+    <!-- Logout -->
+    <button id="logoutButton" class="btn btn-secondary btn-lg">
+        Log out
     </button>
 </div>
 
@@ -97,5 +104,10 @@ layout = "default"
             console.log(res.status, res.statusText);
         }
 
+    });
+
+    logoutButton.addEventListener('click', async(evt) => {
+        const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'logout' }) }}');
+        console.log('Logged out!');
     });
 </script>
