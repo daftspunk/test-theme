@@ -29,6 +29,11 @@ layout = "default"
         Get Profile
     </button>
 
+    <!-- Verify Email -->
+    <button id="verifyEmailButton" class="btn btn-secondary btn-lg">
+        Verify Email
+    </button>
+
     <!-- Logout -->
     <button id="logoutButton" class="btn btn-secondary btn-lg">
         Log out
@@ -39,6 +44,7 @@ layout = "default"
     const store = {};
     const loginForm = document.querySelector('#loginForm');
     const getMeButton = document.querySelector('#getMeButton');
+    const verifyEmailButton = document.querySelector('#verifyEmailButton');
     const form = document.querySelector('#loginForm');
 
     // Inserts the jwt to the store object
@@ -76,11 +82,6 @@ layout = "default"
     });
 
     getMeButton.addEventListener('click', async(evt) => {
-        if (!store.JWT) {
-            console.log('Missing token!');
-            return;
-        }
-
         const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'me' }) }}', {
             headers: {
                 'Authorization': `Bearer ${store.JWT}`
@@ -104,6 +105,25 @@ layout = "default"
             console.log(res.status, res.statusText);
         }
 
+    });
+
+    verifyEmailButton.addEventListener('click', async(evt) => {
+        const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'verify' }) }}', {
+            headers: {
+                'Authorization': `Bearer ${store.JWT}`
+            }
+        });
+
+        const payload = await res.text(),
+            response = JSON.parse(payload) || {};
+
+        if (res.status >= 200 && res.status <= 299) {
+            console.log("Verieid email!", response);
+        }
+        else {
+            // Handle errors
+            console.log(res.status, res.statusText, response.error.message);
+        }
     });
 
     logoutButton.addEventListener('click', async(evt) => {
