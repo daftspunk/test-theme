@@ -26,6 +26,16 @@ function onStart()
             <pre>{{ backendUser.avatar|media }}</pre>
         </li>
         <li>
+            <h5>Avatar URL - |resize(filename: 'foobar')</h5>
+            <img src="{{ backendUser.avatar|resize(200, null, { filename: 'foobar' }) }}" width="100" height="100" />
+            <pre>{{ backendUser.avatar|resize(200, null, { filename: 'foobar' }) }}</pre>
+        </li>
+        <li>
+            <h5>Avatar URL - |resize(filename: 'foobar', group: 'mygroup')</h5>
+            <img src="{{ backendUser.avatar|resize(200, null, { filename: 'foobar', group: 'mygroup' }) }}" width="100" height="100" />
+            <pre>{{ backendUser.avatar|resize(200, null, { filename: 'foobar', group: 'mygroup' }) }}</pre>
+        </li>
+        <li>
             <h5>Media URL - |media</h5>
             <img src="{{ 'company-founder.png'|media }}" width="100" height="100" />
             <pre>{{ 'company-founder.png'|media }}</pre>
@@ -36,5 +46,4 @@ function onStart()
             <pre>{{ 'company-founder.png'|resize(260, null, { mode: 'crop' }) }}</pre>
         </li>
     </ul>
-
 </div>
