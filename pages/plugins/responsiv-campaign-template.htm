@@ -95,6 +95,9 @@ isDynamic = 0
                             <td>
                                 <div style="font-size:12px;color:#333333;font-family:Helvetica, Arial, sans-serif;">
 
+                                    <div class="test-link">
+                                        Test Page Link: {{ 'cms/locale'|page }}
+                                    </div>
                                     <div style="padding-top:30px">
                                         <h2 style="font-size:40px;color:#555555;padding:0;margin:0;letter-spacing:-1px">
                                             Debug Data
@@ -105,6 +108,22 @@ isDynamic = 0
                                             Subscriber email - {{ campaignTemplate.subscriber.email }}
                                         </pre>
                                     </div>
+
+                                    <br />
+                                    {variable name="button_url"  label="Link" type="pagefinder"}{/variable}
+                                    {variable name="button_label" label="Label" type="text"}{/variable}
+
+                                    <table cellspacing="0" cellpadding="0" border="0" align="center" width="660" bgcolor="#ff0000" align="center" valign="middle" style="border-radius: 5px; overflow: hidden; width: 660px; font-family: Arial,Helvetica,sans-serif; font-size: 16px; color: white; line-height:18px;">
+                                        <tr>
+                                            <td bgcolor="#ff0000" height="50" width="100%" style="text-align: center; ">
+                                                <a href="{{ button_url|link }}" target="_blank" style="text-align: center; padding: 0 20px; text-decoration: none; color: white !important; font-weight: bold; display: block;">
+                                                    {{ button_label }}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <p>{{ button_url }}</p>
 
                                     <div style="padding-top:30px">
                                         <h2 style="font-size:40px;color:#555555;padding:0;margin:0;letter-spacing:-1px">
