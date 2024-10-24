@@ -16,4 +16,15 @@ url = "/cms/placeholder"
             console.log('script from index.htm!')
         </script>
     {% endput %}
+
+    {% put pageTitles = {
+        '0':  "Dashboard",
+        '1':  "Products",
+        '2':  product.name,
+        }
+    %}
+
+    {% set breadcrumbs = placeholder('pageTitles') %}
+
+    {{ d(breadcrumbs) }}
 </div>
