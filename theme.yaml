@@ -15,6 +15,16 @@ form:
             type: colorpicker
             assetVar: 'link-color'
 
+        theme_color:
+            type: radio
+            label: Theme color
+            assetVar: 'theme_color'
+            cssClass: inline-options
+            options:
+                aqua: aqua
+                green: green
+                leaf: leaf
+
     tabs:
         fields:
             _section_footer:
