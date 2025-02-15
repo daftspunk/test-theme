@@ -108,7 +108,7 @@ layout = "default"
     });
 
     verifyEmailButton.addEventListener('click', async(evt) => {
-        const res = await fetch('{{ 'plugins/rainlab-user-api'|page({ action: 'verify' }) }}', {
+        const res = await fetch('{{ 'plugins/rainlab-user-api-verify'|page({ action: 'request' }) }}', {
             headers: {
                 'Authorization': `Bearer ${store.JWT}`
             }
@@ -118,7 +118,7 @@ layout = "default"
             response = JSON.parse(payload) || {};
 
         if (res.status >= 200 && res.status <= 299) {
-            console.log("Verieid email!", response);
+            console.log("Verified email!", response);
         }
         else {
             // Handle errors

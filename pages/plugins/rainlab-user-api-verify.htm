@@ -1,0 +1,34 @@
+##
+title = "RainLab User API"
+url = "/rainlabuser/api/verify/:action?request"
+layout = "default"
+
+[account]
+[session]
+checkToken = 1
+==
+{% if not session.user %}
+    {% do response({
+        error: 'Access Denied'
+    }, 403) %}
+{% endif %}
+
+{% if this.param.action == 'request' %}
+    {% do session.user.setUrlForEmailVerification(
+        this|page({ action: 'confirm' }) ~ '?redirect=0'
+    ) %}
+
+    {% do response(ajaxHandler('onVerifyEmail')) %}
+{% endif %}
+
+{% if this.param.action == 'confirm' %}
+    {% if session.user.hasVerifiedEmail %}
+        {% do response({
+            success: "Thank you for verifying your email."
+        }, 201) %}
+    {% else %}
+        {% do response({
+            error: "The provided email verification code was invalid."
+        }, 400) %}
+    {% endif %}
+{% endif %}
