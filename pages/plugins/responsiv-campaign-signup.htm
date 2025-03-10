@@ -1,0 +1,28 @@
+##
+title = "RainLab User"
+url = "/responsivcampaign/signup"
+layout = "default"
+
+[campaignSignup]
+list = "followers"
+confirm = 0
+==
+<div id="container" class="container">
+    <h1>Campaign Signup</h1>
+    <form
+        data-request="campaignSignup::onSignup"
+        data-request-update="{ 'campaignSignup::result': '#container' }">
+
+        <!-- Optional first name -->
+        <input name="first_name" type="text" placeholder="First Name" />
+
+        <!-- Optional last name -->
+        <input name="last_name" type="text"  placeholder="Last Name" />
+
+        <!-- Required email address -->
+        <input name="email" type="text"  placeholder="john.smith@example.com" />
+
+        <button class="btn btn-default" type="submit">Subscribe</button>
+
+    </form>
+</div>
