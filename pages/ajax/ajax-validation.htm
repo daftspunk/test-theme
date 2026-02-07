@@ -70,6 +70,18 @@ function onCheckUsername()
         throw new ValidationException(['username' => 'Username is taken!']);
     }
 }
+
+function onCheckCheckbox()
+{
+    if (post('checked') === '1') {
+        Flash::success('checked!');
+    }
+    else {
+        Flash::info('unchecked');
+    }
+
+    return ['foo' => 'bar'];
+}
 ?>
 ==
 <div class="container">
@@ -148,8 +160,23 @@ function onCheckUsername()
             name="username"
             data-request="onCheckUsername"
             data-request-query
-            data-track-input
+            data-request-trigger="change"
             data-attach-loading />
         <span data-validate-for="username"></span>
+    </form>
+
+    <form>
+        <label>
+            <input
+                type="checkbox"
+                data-request="onCheckCheckbox"
+                data-request-trigger="change"
+                data-request-flash
+                name="checked"
+                data-request-success="console.log(data)"
+                value="1"
+            />
+            Check Me!
+        <label>
     </form>
 </div>
