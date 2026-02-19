@@ -27,8 +27,8 @@ function onStart()
         </li>
         <li>
             <h5>Avatar URL - |resize(filename: 'foobar')</h5>
-            <img src="{{ backendUser.avatar|resize(200, null, { filename: 'foobar' }) }}" width="100" height="100" />
-            <pre>{{ backendUser.avatar|resize(200, null, { filename: 'foobar' }) }}</pre>
+            <img src="{{ backendUser.avatar|resize(200, null, { mode: 'crop', filename: 'foobar' }) }}" width="100" height="100" />
+            <pre>{{ backendUser.avatar|resize(200, null, { mode: 'crop', filename: 'foobar' }) }}</pre>
         </li>
         <li>
             <h5>Avatar URL - |resize(filename: 'foobar', group: 'mygroup')</h5>
