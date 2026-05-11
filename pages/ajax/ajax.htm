@@ -33,6 +33,11 @@ function onTestAbort()
     sleep(2);
     throw new ApplicationException('Abort failed!');
 }
+
+function onDoRedirect()
+{
+  return Redirect::to('https://google.com');
+}
 ?>
 ==
 <div class="container">
@@ -239,6 +244,12 @@ function onTestAbort()
 
     <hr />
     <h3>Test Redirects</h3>
+
+    <a
+        href="#"
+        class="btn btn-primary"
+        data-request="onDoRedirect"
+    >Test Redirect</a>
 
     <a
         href="#"
