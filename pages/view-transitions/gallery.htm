@@ -1,0 +1,73 @@
+##
+title = "View Transitions: Gallery"
+url = "/view-transitions/gallery"
+layout = "view-transitions"
+==
+<?
+function onStart()
+{
+    $this['items'] = [
+        [
+            'id' => 'sunrise',
+            'title' => 'Sunrise Over Kelp',
+            'tagline' => 'A quiet morning on the coast.',
+            'color' => 'linear-gradient(135deg, #ff8a65 0%, #ffd180 100%)',
+        ],
+        [
+            'id' => 'midnight',
+            'title' => 'Midnight Garden',
+            'tagline' => 'Where the moonlight pools.',
+            'color' => 'linear-gradient(135deg, #283593 0%, #5c6bc0 100%)',
+        ],
+        [
+            'id' => 'foundry',
+            'title' => 'The Foundry',
+            'tagline' => 'Cast iron and orange embers.',
+            'color' => 'linear-gradient(135deg, #b71c1c 0%, #ff7043 100%)',
+        ],
+        [
+            'id' => 'meadow',
+            'title' => 'Spring Meadow',
+            'tagline' => 'New green after the rain.',
+            'color' => 'linear-gradient(135deg, #2e7d32 0%, #aed581 100%)',
+        ],
+        [
+            'id' => 'pierside',
+            'title' => 'Pierside',
+            'tagline' => 'Salt air and wooden planks.',
+            'color' => 'linear-gradient(135deg, #006064 0%, #4dd0e1 100%)',
+        ],
+        [
+            'id' => 'lavender',
+            'title' => 'Lavender Fields',
+            'tagline' => 'Long rows in purple haze.',
+            'color' => 'linear-gradient(135deg, #6a1b9a 0%, #ce93d8 100%)',
+        ],
+    ];
+}
+?>
+==
+<div class="container">
+    <h1>Gallery</h1>
+    <p>
+        Click any card. Watch the colored hero panel smoothly morph into the detail page's hero, while the rest of the page cross-fades. Then use the browser back button to morph it back.
+    </p>
+
+    <div class="vt-gallery">
+        {% for item in items %}
+            <a href="{{ 'view-transitions/detail'|page({ id: item.id }) }}" class="vt-card">
+                <span class="vt-card-hero" style="background: {{ item.color }}; view-transition-name: vt-hero-{{ item.id }};"></span>
+                <span class="vt-card-body">
+                    <div class="ps-4">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.tagline }}</p>
+                    </div>
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <p class="mt-4">
+        <a href="{{ 'view-transitions/index'|page }}">&larr; Back to overview</a>
+    </p>
+</div>

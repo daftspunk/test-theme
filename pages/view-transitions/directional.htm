@@ -1,0 +1,80 @@
+##
+title = "View Transitions: Directional Slide"
+url = "/view-transitions/directional/:step"
+layout = "view-transitions"
+==
+<?
+function onStart()
+{
+    $step = (int) $this->param('step');
+    if ($step < 1 || $step > 3) {
+        $step = 1;
+    }
+
+    $this['step'] = $step;
+    $this['prevStep'] = $step > 1 ? $step - 1 : null;
+    $this['nextStep'] = $step < 3 ? $step + 1 : null;
+}
+?>
+==
+<style>
+    /*
+     * Scoped to this demo: the directional slide only fires when navigating
+     * between the directional steps. The selectors are global because the
+     * pseudo-elements attach to the page root, but the keyframe names are
+     * unique to this demo so they don't collide with other pages.
+     */
+    @keyframes vt-dir-slide-from-right { from { transform: translateX(100%); } }
+    @keyframes vt-dir-slide-to-left    { to   { transform: translateX(-100%); } }
+    @keyframes vt-dir-slide-from-left  { from { transform: translateX(-100%); } }
+    @keyframes vt-dir-slide-to-right   { to   { transform: translateX(100%); } }
+
+    html[data-turbo-visit-direction="forward"]::view-transition-old(root) {
+        animation: vt-dir-slide-to-left 0.4s ease-in-out;
+    }
+    html[data-turbo-visit-direction="forward"]::view-transition-new(root) {
+        animation: vt-dir-slide-from-right 0.4s ease-in-out;
+    }
+    html[data-turbo-visit-direction="back"]::view-transition-old(root) {
+        animation: vt-dir-slide-to-right 0.4s ease-in-out;
+    }
+    html[data-turbo-visit-direction="back"]::view-transition-new(root) {
+        animation: vt-dir-slide-from-left 0.4s ease-in-out;
+    }
+</style>
+
+<div class="container vt-directional">
+    <p>
+        <a href="{{ 'view-transitions/index'|page }}">&larr; Back to overview</a>
+    </p>
+
+    <div class="vt-step">
+        <h2>Step {{ step }} of 3</h2>
+        <p>
+            Use Next to slide forward and Previous (or the browser back button) to slide back. The animation is chosen from the <code>data-turbo-visit-direction</code> attribute the turbo router writes on <code>&lt;html&gt;</code>.
+        </p>
+    </div>
+
+    <div class="vt-step-nav">
+        {% if prevStep %}
+            <a
+                href="{{ 'view-transitions/directional'|page({ step: prevStep }) }}"
+                data-turbo-action="restore"
+                class="btn btn-outline-primary">
+                &larr; Previous (step {{ prevStep }})
+            </a>
+        {% else %}
+            <span></span>
+        {% endif %}
+
+        {% if nextStep %}
+            <a href="{{ 'view-transitions/directional'|page({ step: nextStep }) }}" class="btn btn-primary">
+                Next (step {{ nextStep }}) &rarr;
+            </a>
+        {% else %}
+            <a href="{{ 'view-transitions/directional'|page({ step: 1 }) }}" class="btn btn-outline-secondary">
+                Restart
+            </a>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,51 @@
+##
+title = "View Transitions"
+url = "/view-transitions"
+layout = "view-transitions"
+==
+<div class="container">
+    <h1>View Transitions</h1>
+    <p class="lead">
+        Each link below navigates with the turbo router and uses the browser's native View Transitions API to animate the page change. Try clicking around and using the browser's back button.
+    </p>
+
+    <div class="alert alert-info">
+        <strong>How to test:</strong> the <code>view-transitions</code> layout opts in to both the turbo router (<code>turbo-visit-control: enable</code>) and view transitions (<code>turbo-view-transition: same-origin</code>). Both checks read from the page you are leaving, so navigating from the site home into here is a regular full page load; every link between the demo pages below will use turbo plus a view transition.
+    </div>
+
+    <div class="vt-hub">
+        <a href="{{ 'view-transitions/gallery'|page }}" class="vt-hub-item">
+            <h3>1. Shared element morph</h3>
+            <p>
+                A gallery of cards. Clicking a card morphs the card's hero panel into the detail page hero using a shared
+                <code>view-transition-name</code>. Other content cross-fades.
+            </p>
+        </a>
+
+        <a href="{{ 'view-transitions/directional'|page({ step: 1 }) }}" class="vt-hub-item">
+            <h3>2. Directional slide</h3>
+            <p>
+                A 3-step flow that slides forward on Next and slides back on Previous (or the browser back button), driven by the
+                <code>data-turbo-visit-direction</code> attribute the turbo router sets on <code>&lt;html&gt;</code>.
+            </p>
+        </a>
+
+        <a href="{{ 'view-transitions/scale'|page }}" class="vt-hub-item">
+            <h3>3. Scale + fade variant</h3>
+            <p>
+                Replaces the default cross-fade with a subtle zoom animation. Useful for content-heavy pages where a horizontal slide would feel jarring.
+            </p>
+        </a>
+    </div>
+
+    <hr class="my-5" />
+
+    <h2>How this demo is wired up</h2>
+    <ul>
+        <li>The <code>view-transitions</code> layout adds <code>&lt;meta name="turbo-view-transition" content="same-origin"&gt;</code> alongside the existing turbo meta.</li>
+        <li>The shared transition CSS lives in <code>assets/less/pages/view-transitions.less</code>.</li>
+        <li>Variant-specific keyframes are inline on each page so they only fire during that page's navigations.</li>
+        <li>The site header gets <code>view-transition-name: vt-main-header</code> with no animation, so it stays put while the content underneath morphs.</li>
+        <li>A <code>prefers-reduced-motion: reduce</code> rule zeros out the duration for users who opt out.</li>
+    </ul>
+</div>

@@ -1,0 +1,157 @@
+@import "../theme/boot";
+
+//
+// View Transitions Demo Stylesheet
+//
+// Shared styles for the View Transitions demo pages. Variant-specific
+// animations (slide, scale) live inline on the relevant page so they only
+// take effect for that page's navigations.
+//
+
+// Default cross-fade timing applied to every demo page.
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.35s;
+    animation-timing-function: ease-in-out;
+}
+
+// Header stays put while content underneath morphs. We name the actual visible
+// fixed navbar (#layout-nav), not the outer wrapper (#layout-header), because
+// the wrapper is a zero-height anchor and the navbar itself is the painted
+// element that would otherwise get caught in the root cross-fade.
+#layout-nav {
+    view-transition-name: vt-main-header;
+}
+
+::view-transition-old(vt-main-header),
+::view-transition-new(vt-main-header) {
+    animation: none;
+}
+
+//
+// Gallery cards
+//
+.vt-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    .vt-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .vt-card-hero {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+        }
+
+        .vt-card-body {
+            padding: 1rem 1.25rem 1.25rem;
+
+            h3 {
+                font-size: 1.1rem;
+                margin: 0 0 0.25rem;
+            }
+
+            p {
+                margin: 0;
+                color: #6c757d;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+//
+// Detail page hero
+//
+.vt-detail-hero {
+    display: block;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+//
+// Directional demo
+//
+.vt-directional {
+    margin-top: 2rem;
+
+    .vt-step {
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        background: #f5f7fb;
+        text-align: center;
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .vt-step-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+//
+// Hub menu for the view transitions demos
+//
+.vt-hub {
+    margin-top: 2rem;
+
+    .vt-hub-item {
+        display: block;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        background: #fff;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            margin: 0 0 0.25rem;
+        }
+
+        p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+//
+// Respect reduced-motion preferences
+//
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0s !important;
+    }
+}

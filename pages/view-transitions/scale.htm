@@ -1,0 +1,42 @@
+##
+title = "View Transitions: Scale + Fade"
+url = "/view-transitions/scale"
+layout = "view-transitions"
+==
+<style>
+    @keyframes vt-scale-fade-out  { to   { opacity: 0; } }
+    @keyframes vt-scale-fade-in   { from { opacity: 0; } }
+    @keyframes vt-scale-down-anim { to   { transform: scale(0.95); } }
+    @keyframes vt-scale-up-anim   { from { transform: scale(0.95); } }
+
+    ::view-transition-old(root) {
+        animation: 0.2s ease-in both vt-scale-fade-out, 0.3s ease-in both vt-scale-down-anim;
+    }
+    ::view-transition-new(root) {
+        animation: 0.3s ease-out 0.1s both vt-scale-fade-in, 0.3s ease-out 0.1s both vt-scale-up-anim;
+    }
+</style>
+
+<div class="container">
+    <h1>Scale + Fade Variant</h1>
+    <p class="lead">
+        This page swaps the default cross-fade for a subtle zoom. Navigate away and back to feel it.
+    </p>
+
+    <p>
+        Try these:
+    </p>
+    <ul>
+        <li><a href="{{ 'view-transitions'|page }}">Back to the overview</a></li>
+        <li><a href="{{ 'view-transitions/gallery'|page }}">Into the gallery</a> (note how the transition style differs)</li>
+        <li><a href="{{ 'view-transitions/directional'|page({ step: 1 }) }}">Into the directional flow</a></li>
+    </ul>
+
+    <p class="text-muted mt-4">
+        <small>
+            The scale + fade animation is defined inside an inline <code>&lt;style&gt;</code> block on this page. Because the
+            <code>::view-transition-old(root)</code> pseudo-element only exists during this page's navigations, the override is
+            naturally scoped without needing any JavaScript wiring.
+        </small>
+    </p>
+</div>

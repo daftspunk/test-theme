@@ -1,0 +1,74 @@
+##
+title = "View Transitions: Detail"
+url = "/view-transitions/detail/:id"
+layout = "view-transitions"
+==
+<?
+function onStart()
+{
+    $items = [
+        'sunrise' => [
+            'title' => 'Sunrise Over Kelp',
+            'tagline' => 'A quiet morning on the coast.',
+            'color' => 'linear-gradient(135deg, #ff8a65 0%, #ffd180 100%)',
+            'body' => 'The kelp shifts with the tide while the first light catches the cliff face. Stretches of damp sand record the morning in footprints that will be gone by noon.',
+        ],
+        'midnight' => [
+            'title' => 'Midnight Garden',
+            'tagline' => 'Where the moonlight pools.',
+            'color' => 'linear-gradient(135deg, #283593 0%, #5c6bc0 100%)',
+            'body' => 'White flowers open after sunset and the path between the hedges feels like a different country.',
+        ],
+        'foundry' => [
+            'title' => 'The Foundry',
+            'tagline' => 'Cast iron and orange embers.',
+            'color' => 'linear-gradient(135deg, #b71c1c 0%, #ff7043 100%)',
+            'body' => 'Heat radiates from the doorway and the air tastes of metal. Sparks rise into the rafters and disappear.',
+        ],
+        'meadow' => [
+            'title' => 'Spring Meadow',
+            'tagline' => 'New green after the rain.',
+            'color' => 'linear-gradient(135deg, #2e7d32 0%, #aed581 100%)',
+            'body' => 'Every blade of grass is holding a drop of water and the whole hillside is glittering.',
+        ],
+        'pierside' => [
+            'title' => 'Pierside',
+            'tagline' => 'Salt air and wooden planks.',
+            'color' => 'linear-gradient(135deg, #006064 0%, #4dd0e1 100%)',
+            'body' => 'Fishing lines stretch off the rail and the gulls are very serious about whatever is in your sandwich.',
+        ],
+        'lavender' => [
+            'title' => 'Lavender Fields',
+            'tagline' => 'Long rows in purple haze.',
+            'color' => 'linear-gradient(135deg, #6a1b9a 0%, #ce93d8 100%)',
+            'body' => 'Bees move from one stalk to the next in straight, businesslike lines.',
+        ],
+    ];
+
+    $id = $this->param('id');
+    if (!isset($items[$id])) {
+        return Redirect::to('/view-transitions/gallery');
+    }
+
+    $this['id'] = $id;
+    $this['item'] = $items[$id];
+}
+?>
+==
+<div class="container">
+    <p class="mt-3">
+        <a href="{{ 'view-transitions/gallery'|page }}">&larr; Back to gallery</a>
+    </p>
+
+    <span class="vt-detail-hero" style="background: {{ item.color }}; view-transition-name: vt-hero-{{ id }};"></span>
+
+    <h1>{{ item.title }}</h1>
+    <p class="lead">{{ item.tagline }}</p>
+    <p>{{ item.body }}</p>
+
+    <p class="text-muted mt-4">
+        <small>
+            The colored hero shares <code>view-transition-name: vt-hero-{{ id }}</code> with the matching card on the gallery page, so the browser morphs one into the other across the navigation.
+        </small>
+    </p>
+</div>

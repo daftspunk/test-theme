@@ -1,0 +1,32 @@
+description = "View Transitions demo layout"
+
+[resources]
+less[] = "layouts/default.less"
+less[] = "pages/view-transitions.less"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="turbo-visit-control" content="enable" />
+        <meta name="turbo-view-transition" content="same-origin" />
+        {% partial 'site/meta' %}
+    </head>
+    <body class="{{ 'page-'~this.page.id }}">
+
+        <!-- Header -->
+        <header id="layout-header">
+            {% partial 'site/header' %}
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content">
+            {% page %}
+        </section>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial 'site/footer' %}
+        </footer>
+
+    </body>
+</html>
