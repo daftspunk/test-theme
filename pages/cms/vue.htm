@@ -1,0 +1,37 @@
+title = "Testing Vue Components"
+url = "/cms/vue"
+layout = "default"
+
+[vueTester]
+==
+<div class="container py-4">
+    <h1>
+        Vue Components Smoke Test
+    </h1>
+    <p>
+        The counter below is a Vue component registered by a CMS component, with a badge dependency and component CSS.
+    </p>
+
+    {% component 'vueTester' %}
+
+    <div class="mt-4">
+        <p>
+            The panel below is a Vue component registered only inside an AJAX handler.
+        </p>
+        <button
+            type="button"
+            class="btn btn-outline-primary"
+            data-request="vueTester::onLoadPanel"
+            data-request-update="{ 'vueTester::lazy': '#lazyContainer' }"
+            data-request-success="oc.mountVueApp('#lazyPanelApp')">
+            Load Lazy Panel
+        </button>
+        <div id="lazyContainer" class="mt-3"></div>
+    </div>
+</div>
+
+{% vuecomponents %}
+
+<script type="module">
+    oc.mountVueApp('#vueTesterApp');
+</script>
